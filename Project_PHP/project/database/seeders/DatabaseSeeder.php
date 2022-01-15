@@ -6,7 +6,6 @@ use Database\Seeders\CategorySeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\ProductSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
