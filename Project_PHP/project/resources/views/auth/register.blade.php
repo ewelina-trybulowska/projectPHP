@@ -33,6 +33,34 @@
                     <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')"  autofocus />
                 </div>
 
+                <!-- Street Address 1 -->
+                <div>
+                    <x-label for="street_address_1" :value="__('Street Address')" />
+
+                    <x-input id="street_address_1" class="block mt-1 w-full" type="text" name="street_address_1" :value="old('street_address_1')"  autofocus />
+                </div>
+
+                <!-- Street Address 2 -->
+                <div>
+                    <x-label for="street_address_2" :value="__('')" />
+
+                    <x-input id="street_address_2" class="block mt-1 w-full" type="text" name="street_address_2" :value="old('street_address_2')"  autofocus />
+                </div>
+
+                <!-- Zip code -->
+                <div>
+                    <x-label for="zip_code" :value="__('Zip code')" />
+
+                    <x-input id="zip_code" class="block mt-1 w-full" type="text" name="zip_code" :value="old('zip_code')"  autofocus />
+                </div>
+
+                <!-- City -->
+                <div>
+                    <x-label for="city" :value="__('City')" />
+
+                    <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"  autofocus />
+                </div>
+
                 <!-- Phone -->
                 <div>
                     <x-label for="phone" :value="__('Phone')" />

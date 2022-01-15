@@ -40,7 +40,11 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'firstname' => ['required', 'string', 'max:255'],
             'surname' => ['required','string','max:255'],
-            'phone' => ['nullable','digits:9', 'unique:users'],
+            'street_address_1' => ['required','string', 'max:255'],
+            'street_address_2'=>['nullable','string', 'max:255'],
+            'zip_code'=>['required', 'string', 'min:6', 'max:6'],
+            'city'=>['required','string', 'max:255'],
+            'phone' => ['nullable','min:9', 'max:9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -56,9 +60,17 @@ class RegisteredUserController extends Controller
         ]);
 
 
+        $address=new Address();
+
         event(new Registered($user));
 
         Auth::login($user);
+        $address->user_id=$user->id;
+        $address->street_address_1=$request->street_address_1;
+        $address->street_address_2=$request->street_address_2;
+        $address->zip_code=$request->zip_code;
+        $address->city=$request->city;
+        $address->save();
 
         return redirect(RouteServiceProvider::HOME);
     }
