@@ -14,6 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $admin_id = DB::table('roles')->where('name','Admin')->first()->id;
+        $user_id = DB::table('roles')->where('name','User')->first()->id;
+
         DB::table('users')->insert([
             'username' => 'John_Doe',
             'firstname'=>'John',
@@ -21,6 +24,8 @@ class UserSeeder extends Seeder
             'phone'=>'987654321',
             'email' =>'john.doe@gmail.com',
             'password' => bcrypt('secret'),
+            'role_id' => $admin_id
         ]);
+
     }
 }
