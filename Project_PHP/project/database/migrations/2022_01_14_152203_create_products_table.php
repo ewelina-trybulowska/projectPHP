@@ -22,6 +22,10 @@ class CreateProductsTable extends Migration
             $table->integer('size');
             $table->text('description');
             $table->integer('amount');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+
+
 
 
         });

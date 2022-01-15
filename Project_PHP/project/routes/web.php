@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('mainpage');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,4 +26,7 @@ require __DIR__.'/auth.php';
 
 Route::resource('products', \App\Http\Controllers\ProductController::class);
 Route::resource('admin', \App\Http\Controllers\AdminController::class)->middleware(['auth','admin']);
+
+Route::get('/women', '\App\Http\Controllers\ProductController@women')->name('products.women');
+Route::get('/men', '\App\Http\Controllers\ProductController@men')->name('products.men');
 
