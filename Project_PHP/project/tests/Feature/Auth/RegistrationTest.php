@@ -23,7 +23,10 @@ class RegistrationTest extends TestCase
         Role::factory()->create();
 
         $response = $this->post('/register', [
-            'name' => 'Test User',
+            'username' => 'Test',
+            'firstname' => 'Name',
+            'surname' => 'Surname',
+            'phone' => 123123456,
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
