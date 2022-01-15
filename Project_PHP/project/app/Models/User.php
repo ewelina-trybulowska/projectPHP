@@ -24,6 +24,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -45,4 +46,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin(){
+        if($this->role->name == "Admin"){
+            return true;
+        }
+        return false;
+    }
 }
