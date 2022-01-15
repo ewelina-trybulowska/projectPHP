@@ -5,4 +5,4 @@ $I->wantTo('See homepage');
 
 $I->amOnPage('/');
 
-$I->seeInTitle('Laravel');
+$I->seeInTitle('SHOES STORE');
