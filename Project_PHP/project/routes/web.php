@@ -24,5 +24,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('products', \App\Http\Controllers\ProductController::class);
-Route::resource('admin', \App\Http\Controllers\AdminController::class)->middleware(['auth','admin']);
+Route::resource('/admin/users', \App\Http\Controllers\Admin\UsersController::class)->middleware(['auth','admin']);
 
