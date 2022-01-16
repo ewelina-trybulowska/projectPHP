@@ -16,7 +16,16 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('file');
+            $table->string('file_name');
+
+
+            //$table->bigIncrements('id');
+            //$table->bigInteger('product_id')->unsigned();
+            //$table->foreign('product_id')->references('id')->on('images');
+            //$table->string('file_name')->nullable();
+            //$table->timestamps();
+
+
         });
     }
 

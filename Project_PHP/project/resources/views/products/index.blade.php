@@ -56,9 +56,9 @@
             @if($products)
                 @foreach($products as $product)
                     <div class="img-container">
-                        <img
-                            src="https://media.istockphoto.com/photos/football-boots-hovering-in-the-air-as-if-hitting-the-ball-concept-picture-id1174810288?k=20&m=1174810288&s=612x612&w=0&h=IPpOJ6SCTcs53bkhOiN4S_SeqDQKM69WeZAGTn-l8ws="
-                            class="d-block w-100" alt="...">
+
+                        <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 400px; height: 300px;"/>
+
                         <div class="details">
                             <h3>{{ $product->brand . ' ' . $product->model }}</h3>
                             <p>PRICE: {{$product->price }}$</p>
