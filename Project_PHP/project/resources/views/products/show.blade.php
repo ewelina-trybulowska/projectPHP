@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SHOES STORE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link href="{{URL::asset("css/products_index.css")}}" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -11,6 +11,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cinzel&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-style: oblique;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,12 +68,12 @@
             <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; float: left; margin-top: 20px"/>
             <div class="description" style="float: left; margin: 30px;" >
                 <h2>{{ $product->brand . ' ' . $product->model }}</h2>
-                <p style="font-family: Apple,serif">${{$product->price }}</p>
+                <h5 style="font-family: Apple,serif">${{$product->price }}</h5>
                {{-- <p>Quantity available: {{$product->amount}}</p>--}}
                 {{-- <p>Size: {{$product->size}}</p>--}}
                 <hr>
-                <h5>PRODUCT INFO</h5>
-                <p>{{ $product->description }}</p>
+                <h4>PRODUCT INFO</h4>
+                <h6 style="font-size: small">{{ $product->description }}</h6>
 
 
             </div>
