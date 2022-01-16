@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -58,8 +59,12 @@ class User extends Authenticatable
         return false;
     }
 
-    public function address()
-    {
+    public function address(){
         return $this->hasOne(Address::class);
+	}
+
+    public function scopeOfType($query, $type){
+        $id = DB::table('roles')->where('name', $type)->first()->id;
+        return $query->where('role_id',$id);
     }
 }

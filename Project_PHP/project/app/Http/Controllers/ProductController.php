@@ -14,10 +14,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(){
+
+    }
+    public function women()
     {
-        $shoes = DB::table('products')->get();
-        return view('products.index', ['products' => $shoes]);
+        //$shoes = DB::table('products')->get();
+        $products = Product::where('category_id','=', '1')->get();
+        return view('products.index', ['products' => $products]);
+       // return $products;
+    }
+
+    public function men()
+    {
+        $products = Product::where('category_id','=', '2')->get();
+        return view('products.index', ['products' => $products]);
+
     }
 
     public function productsBySubcategory($subcategory)
