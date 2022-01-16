@@ -59,6 +59,10 @@ class User extends Authenticatable
         return false;
     }
 
+    public function address(){
+        return $this->hasOne(Address::class);
+	}
+
     public function scopeOfType($query, $type){
         $id = DB::table('roles')->where('name', $type)->first()->id;
         return $query->where('role_id',$id);

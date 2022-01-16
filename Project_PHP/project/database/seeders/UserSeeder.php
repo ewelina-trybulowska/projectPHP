@@ -39,5 +39,25 @@ class UserSeeder extends Seeder
 
         ]);
 
+        DB::table('users')->insert([
+            'username' => 'Jane_Doe',
+            'firstname'=>'Jane',
+            'surname'=>'Doe',
+            'phone'=>'321654987',
+            'email' =>'jane.doe@gmail.com',
+            'password' => bcrypt('secret2'),
+            'role_id' => $user_id
+        ]);
+
+        $users_id = DB::table('users')->first()->id;
+
+        DB::table('addresses')->insert([
+            'street_address_1' => 'River 5',
+            'street_address_2'=>'',
+            'zip_code'=>'543-21',
+            'city'=>'Cracow',
+            'user_id' => $users_id
+        ]);
+
     }
 }
