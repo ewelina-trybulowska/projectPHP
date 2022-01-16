@@ -9,14 +9,15 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $uploads = '/images/products';
-    protected $fillable = ['file'];
+    //protected $uploads = '/images/products';
+    protected $fillable = ['file_name'];
 
-    public function getFileAttribute($photo) {
-        return $this->uploads . '/' . $photo;
-    }
+  //  public function products(){
+    //    return $this->belongsTo(Product::class);
+    //}
 
-    public function deleteImage(){
-        return unlink(public_path() .  $this->file);
+    public function products()
+    {
+        return $this->hasMany( Product::class);
     }
 }
