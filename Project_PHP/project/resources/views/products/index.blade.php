@@ -36,7 +36,7 @@
         <div class="start_menu">
             <div>
                 <a href="{{ route('mainpage') }}"><img style=" display: block;margin: 10px auto 30px auto;"
-                                                       src="https://r70.cooltext.com/rendered/cooltext402221536208962.png"
+                                                       src="{{URL::asset('Images/LOGO.png')}}"
                                                        alt="Shop"/></a>
             </div>
         </div>
@@ -57,12 +57,12 @@
                 @foreach($products as $product)
                     <div class="img-container">
 
-                        <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 400px; height: 300px;"/>
+                        <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; "/>
 
                         <div class="details">
                             <h3>{{ $product->brand . ' ' . $product->model }}</h3>
                             <p>PRICE: {{$product->price }}$</p>
-                            <a href="">Details</a>
+                            <a href="{{ route('products.show',$product)}}">Details</a>
                         </div>
                     </div>
                 @endforeach
