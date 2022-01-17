@@ -21,9 +21,7 @@ class CreateProductsTable extends Migration
                 $table->string('brand');
                 $table->string('model');
                 $table->integer('price');
-                $table->integer('size');
                 $table->text('description');
-                $table->integer('amount');
                 $table->unsignedBigInteger('category_id');
                 $table->foreign('category_id')->references('id')->on('categories') ;
 
