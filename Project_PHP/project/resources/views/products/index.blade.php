@@ -63,19 +63,20 @@
         <h3 style="text-align: center; font-size: small">{{$products->count()}} products are available</h3>
         <hr style="width: 100%"/>
 
-    <div class="container">
+
+    <div class="container shadow sm:rounded-lg border-gray-100">
 
         <div class="clearfix">
             @if($products)
                 @foreach($products as $product)
                     <div class="img-container">
 
-                        <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; "/>
+                        <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
 
-                        <div class="details">
+                        <div class="details" style="margin-top: 20px">
                             <h3>{{ $product->brand . ' ' . $product->model }}</h3>
                             <p>PRICE: {{$product->price }}$</p>
-                            <a href="{{ route('products.show',$product)}}">Details</a>
+                            <a href="{{ route('products.show',$product)}}" style="color: #4a5568">Details</a>
                         </div>
                     </div>
                 @endforeach

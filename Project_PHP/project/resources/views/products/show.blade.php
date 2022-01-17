@@ -61,11 +61,11 @@
     <hr/>
 
 
-    <div class="container">
+    <div class="col-sm-6 container shadow sm:rounded-lg border-gray-100" style="padding: 20px;">
 
-        <div class="clearfix">
+        <div class="clearfix" >
 
-            <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; float: left; margin-top: 20px"/>
+            <img src="{{ url('/') }}{{ $product->image->file_name}}"  style="width: 380px; height: 300px; float: left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
             <div class="description" style="float: left; margin: 30px;" >
                 <h2>{{ $product->brand . ' ' . $product->model }}</h2>
                 <h5 style="font-family: Apple,serif">${{$product->price }}</h5>
