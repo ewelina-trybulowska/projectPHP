@@ -20,15 +20,20 @@ class ProductController extends Controller
     }
     public function women()
     {
-        //$shoes = DB::table('products')->get();
-        $products = Product::where('category_id','=', '1')->get();
+        //$products = Product::ofType('Women')->Available()->get();  // wersja z tym, że usuwamy gdy amount=0
+
+        $products = Product::ofType('Women')->whereHas('shelves', function($query){ // wersja z tym, że sprawdzamy czy amount>0
+            $query->where('amount','>',0);
+        })->get();
         return view('products.index', ['products' => $products]);
-       // return $products;
     }
 
     public function men()
     {
-        $products = Product::where('category_id','=', '2')->get();
+        //$products = Product::ofType('Men')->Available()->get();
+        $products = Product::ofType('Men')->whereHas('shelves', function($query){
+            $query->where('amount','>',0);
+        })->get();
         return view('products.index', ['products' => $products]);
 
     }
