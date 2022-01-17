@@ -32,3 +32,5 @@ Route::resource('products', \App\Http\Controllers\ProductController::class);
 Route::get('/women', '\App\Http\Controllers\ProductController@women')->name('products.women');
 Route::get('/men', '\App\Http\Controllers\ProductController@men')->name('products.men');
 
+Route::resource('/user', \App\Http\Controllers\UserController::class);
+
