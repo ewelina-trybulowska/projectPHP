@@ -40,7 +40,7 @@ class ProductController extends Controller
 
     public function search(Request $request){
 
-        //for women only
+        //DZIALALO BEZ TYCH POLEK... - TERAZ ROZMIAR SIE ROZWALIL.
 
        $products=Product::where('category_id','=', '1')
             ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
