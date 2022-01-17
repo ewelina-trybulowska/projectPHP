@@ -13,21 +13,16 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-       // Schema::dropIfExists('products');
-        //if(!Schema::hasTable('categories')) {
-            Schema::create('products', function (Blueprint $table) {
+                Schema::create('products', function (Blueprint $table) {
                 $table->BigIncrements('id');
-
                 $table->string('brand');
-                $table->string('model');
+                $table->string('type');
                 $table->integer('price');
                 $table->text('description');
                 $table->unsignedBigInteger('category_id');
                 $table->foreign('category_id')->references('id')->on('categories') ;
-
                 $table->unsignedBigInteger('image_id');
                 $table->foreign('image_id')->references('id')->on('images');
-
                 $table->timestamps();
             });
         //}
