@@ -55,7 +55,7 @@
     </style>
 
     <style>
-        .button-53 {   background-color: #3DD1E7;
+        .button-53 {   background-color: #a5eaef;
             border: 0 solid #E5E7EB;
             box-sizing: border-box;
             color: #000000;
@@ -127,14 +127,14 @@
                 <br>
                 <label class='muted'>Wybierz ilość :</label>
                 <div class="input-amount">
-                    <input class="amount" type="number" name="quantity" value="1"  min="1" max="10" style="background-color: rgba(208, 111, 206, 0.72);">
+                    <input class="amount" type="number" name="quantity" value="1"  min="1" max="10" style="background-color:#f6d8df;">
                 </div>
 
                 <br>
                 <label class='muted'>Wybierz rozmiar :</label>
                 <br>
                 <div class="custom-select" style="width:200px;">
-                    <select style="background-color: rgba(208, 111, 206, 0.72);">
+                    <select style="background-color:#f6d8df;">
                         <option value="0" >Select your size:</option>
                         <option value="37">37</option>
                         <option value="38">38</option>
