@@ -448,3 +448,20 @@ a.button2 {
 
 
 }
+
+
+option {
+    font-family: 'Cinzel', serif;
+    font-size: small;
+    font-style: oblique;
+}
+
+#but {
+
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px 30px;
+    font-style: italic;
+    text-decoration: none;
+    background: lavenderblush;
+    color: black;
+}
