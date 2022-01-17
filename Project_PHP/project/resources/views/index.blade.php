@@ -63,8 +63,7 @@
     </div>
     <hr/>
 
-
-    <div class="col-sm-5" style="display: block;margin: 80px auto 50px auto">
+    <div class="col-sm-5 shadow sm:rounded-lg border-gray-100" style="display: block;margin: 80px auto 50px auto">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" >
                 <div class="carousel-item active">
