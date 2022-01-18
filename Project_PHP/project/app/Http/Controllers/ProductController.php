@@ -42,16 +42,32 @@ class ProductController extends Controller
 
         //DZIALALO BEZ TYCH POLEK... - TERAZ ROZMIAR SIE ROZWALIL.
 
-       $products=Product::where('category_id','=', '1')
+      /* $products=Product::where('category_id','=', '1')
             ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
             ->where('type', 'LIKE', '%' . $request->type . '%' )
             ->where('size', 'LIKE', '%' . $request->size . '%' )->get();
 
-        return $products;
+        return $products;*/
 
+        $products1=Product::where('category_id','=', '1')
+            ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
+            ->where('type', 'LIKE', '%' . $request->type . '%' );
+
+        $products2 = Product::ofType('Women')->
+        whereHas('shelves', function($query) use ($request) {
+              $query->where('size', 'LIKE', '%' . $request->size . '%' );});
+
+        $result=$products1->join($products2, 'id', '=', 'id')->get();
+
+       /* foreach ($products1 as $p){
+            echo $p->id;
+        }*/
+
+        return $result;
     }
 
-    public function show(Product $product){
+    public function show(Product $product)
+    {
         return view('products.show')->withProduct($product);
     }
 

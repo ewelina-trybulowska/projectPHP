@@ -27,7 +27,7 @@ class ShelfSeeder extends Seeder
             ],
             [
                 'product_id' => 2,
-                'size' =>  36,
+                'size' =>  37,
                 'amount' => 155,
             ],
             [
@@ -38,21 +38,21 @@ class ShelfSeeder extends Seeder
             [
                 'product_id' => 3,
                 'size' =>  39,
-                'amount' => 0,
+                'amount' => 2,
             ],
             [
                 'product_id' => 4,
-                'size' =>  44,
+                'size' =>  43,
                 'amount' => 267,
             ],
             [
                 'product_id' => 4,
-                'size' =>  45,
+                'size' =>  42,
                 'amount' => 142,
             ],
             [
                 'product_id' => 4,
-                'size' =>  47,
+                'size' =>  43,
                 'amount' => 50,
             ],
             [
