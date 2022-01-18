@@ -17,10 +17,7 @@ Route::get('/', function () {
     return view('index');
 })->name('mainpage');
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\UserController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware(['auth','admin'])->name('admin.dashboard');
 Route::resource('/admin/users', \App\Http\Controllers\Admin\UsersController::class)->middleware(['auth','admin']);

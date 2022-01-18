@@ -9,7 +9,7 @@
 {{--
             <div class="wrapper" style="overflow: hidden">
 --}}
-                <div class="card" style="border-width: 3px; width:250px; float: left; margin-right: 80px;">
+                <div class="card" style="border-width: 3px; width:250px; float: left; margin-right: 80px; margin-left: 20px;">
                     <article class="card-group-item" style="background-color: lavenderblush">
                         <header class="card-header">
                             <h3 class="title">FILTER</h3>
@@ -103,9 +103,7 @@
 
         {{-- PRODUCT --}}
 
-        <div class="container shadow sm:rounded-lg border-gray-100" style="float: left">
-
-            <div class="clearfix">
+        <div class="border-gray-100" style="float: left">
                 @if($products)
                     @foreach($products as $product)
                         <div class="img-container">
@@ -116,12 +114,15 @@
                             <div class="details" style="margin-top: 20px">
                                 <h3>{{ $product->brand . ' ' . $product->model }}</h3>
                                 <p>PRICE: {{$product->price }}$</p>
-                                <a href="{{ route('products.show',$product)}}" style="color: #4a5568">Details</a>
+                                <a href="{{ route('products.show',$product)}}" style="color: #4a5568">
+                                <button class="button-details">
+                                    Details
+                                </button>
+                                </a>
                             </div>
                         </div>
                     @endforeach
                 @endif
-            </div>
         </div>
 
 </x-shop>
