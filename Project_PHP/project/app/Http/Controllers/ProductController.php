@@ -71,9 +71,5 @@ class ProductController extends Controller
         return view('products.show')->withProduct($product);
     }
 
-    public function show(Product $product){
-        return view('products.show')->withProduct($product);
-    }
-
 
 }
