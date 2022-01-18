@@ -146,6 +146,9 @@
                     </select>
                 </div>
                 <br>
+
+                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568">Zobacz opinie</a>
+                <br>
             </div>
             <div class="Cart">
                 {{-- <button class="button-53" role="button" href="{{route('koszyk.show')}}">Dodaj do koszyka</button>--}}
