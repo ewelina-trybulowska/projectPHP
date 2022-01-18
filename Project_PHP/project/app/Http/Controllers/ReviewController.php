@@ -17,7 +17,6 @@ class ReviewController extends Controller
     {
         $reviews = $product->reviews()->where('product_id', $product->id)->get();
         return view('reviews.index', compact('product', 'reviews'));
-        //return "p";
     }
 
     /**
@@ -47,7 +46,6 @@ class ReviewController extends Controller
         $review->title = $request->title;
         $review->text = $request->text;
         $r = $product->reviews()->save($review);
-        //return redirect()->route('reviews.index', [$product, $r]);
        return redirect()->route('products.reviews.index',compact('product'));
 
     }

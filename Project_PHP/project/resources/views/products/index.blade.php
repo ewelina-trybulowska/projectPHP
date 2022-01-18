@@ -6,9 +6,7 @@
         {{--  FILTER PANEL --}}
         <form method="post" action="{{ route('products.search') }}">
             @csrf
-{{--
-            <div class="wrapper" style="overflow: hidden">
---}}
+
                 <div class="card" style="border-width: 3px; width:250px; float: left; margin-right: 80px; margin-left: 20px;">
                     <article class="card-group-item" style="background-color: lavenderblush">
                         <header class="card-header">
@@ -91,8 +89,8 @@
 
                         </div>
                     </article>
-                    <div class="submit" style="margin: 20px 50px">
-                        <button id="but">SEARCH</button>
+                    <div class="submit" style="margin: 20px 50px; padding: 10px 30px;">
+                        <button id="but" style="background-color: lavenderblush; border-width: 2px">SEARCH</button>
                     </div>
 
 
