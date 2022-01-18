@@ -67,4 +67,8 @@ class User extends Authenticatable
         $id = DB::table('roles')->where('name', $type)->first()->id;
         return $query->where('role_id',$id);
     }
+
+    public function orders() {
+        return $this->hasMany(HistoryOrder::class);
+    }
 }

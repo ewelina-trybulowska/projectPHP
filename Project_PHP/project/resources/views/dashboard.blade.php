@@ -120,6 +120,24 @@
                             </td>
                         </tr>
                     </table>
+                    <br>
+{{--
+                    history
+--}}
+                    <div class="header_text">
+                        ORDER HISTORY
+                    </div>
+                    <hr class="lav">
+                    <table class="min-w-full bg-white divide-y divide-gray-200">
+                        @for($i=1;$i<3;$i++)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{$i}}. TU INFO O PRODUKCIE</div>
+                            </td>
+                        </tr>
+                        @endfor
+                    </table>
+                    <br>
 
                 </div>
             </div>

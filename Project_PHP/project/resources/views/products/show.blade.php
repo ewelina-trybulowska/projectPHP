@@ -16,17 +16,17 @@
 
 
                 <br>
-                <label class='muted'>Wybierz ilość :</label>
+                <label class='muted'>Quantity:</label>
                 <div class="input-amount">
                     <input class="amount" type="number" name="quantity" value="1"  min="1" max="10" style="background-color:#f6d8df;">
                 </div>
 
                 <br>
-                <label class='muted'>Wybierz rozmiar :</label>
+                <label class='muted'>Select your size: :</label>
                 <br>
                 <div class="custom-select" style="width:200px;">
                     <select style="background-color:#f6d8df;">
-                        <option value="0" >Select your size:</option>
+                        <option value="0" >Select:</option>
                         <option value="37">37</option>
                         <option value="38">38</option>
                         <option value="39">39</option>
@@ -38,12 +38,12 @@
                 </div>
                 <br>
 
-                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568">Zobacz opinie</a>
+                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568">OPINIONS</a>
                 <br>
             </div>
             <div class="Cart">
                 {{-- <button class="button-53" role="button" href="{{route('koszyk.show')}}">Dodaj do koszyka</button>--}}
-                <button class="button-53" role="button">Dodaj do koszyka</button>
+                <button class="button-53" role="button">ADD TO CARD</button>
             </div>
             <br>
             <br>

@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
                 $table->foreign('image_id')->references('id')->on('images');
                 $table->timestamps();
             });
-        //}
+
 
     }
 
@@ -36,15 +36,7 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        /*
-       Schema::table('products', function (Blueprint $table)
-        {
-            $table->dropForeign('category_id_foreign');
-            $table->dropColumn('category_id');
-            $table->dropForeign('image_id_foreign');
-            $table->dropColumn('image_id');
-        });
-        */
+
         Schema::dropIfExists('products');
     }
 }

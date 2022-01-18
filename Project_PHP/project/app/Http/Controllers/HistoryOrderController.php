@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryOrder;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class SubcategoryController extends Controller
+class HistoryOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,11 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+       /* $orders = HistoryOrder::all();
+        $user=Auth::user();
+        return view('history_orders.index')->with('history_orders', $orders)->with('users', $user);*/
+
+        return "p";
     }
 
     /**
@@ -29,7 +36,6 @@ class SubcategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,10 +46,10 @@ class SubcategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\HistoryOrder  $historyOrder
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(HistoryOrder $historyOrder)
     {
         //
     }
@@ -51,10 +57,10 @@ class SubcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\HistoryOrder  $historyOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(HistoryOrder $historyOrder)
     {
         //
     }
@@ -62,11 +68,10 @@ class SubcategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\HistoryOrder  $historyOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, HistoryOrder $historyOrder)
     {
         //
     }
@@ -74,10 +79,10 @@ class SubcategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\HistoryOrder  $historyOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(HistoryOrder $historyOrder)
     {
         //
     }

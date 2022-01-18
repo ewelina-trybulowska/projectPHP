@@ -19,13 +19,6 @@ class CreateImagesTable extends Migration
             $table->string('file_name');
 
 
-            //$table->bigIncrements('id');
-            //$table->bigInteger('product_id')->unsigned();
-            //$table->foreign('product_id')->references('id')->on('images');
-            //$table->string('file_name')->nullable();
-            //$table->timestamps();
-
-
         });
     }
 
