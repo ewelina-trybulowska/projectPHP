@@ -28,7 +28,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100">
 
     <!-- Page Heading -->
         <x-header></x-header>
@@ -37,6 +36,6 @@
     <main>
         {{ $slot }}
     </main>
-</div>
+
 </body>
 </html>

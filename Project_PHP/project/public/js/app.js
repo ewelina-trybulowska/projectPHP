@@ -3,7 +3,7 @@
 
 $(window).scroll(function () {
     var $heightScrolled = $(window).scrollTop();
-    var $defaultHeight = 100;
+    var $defaultHeight = 80;
 
     if ($heightScrolled < $defaultHeight) {
         $('#nav').removeClass("space")
