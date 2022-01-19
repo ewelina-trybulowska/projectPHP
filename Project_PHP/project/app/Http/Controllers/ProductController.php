@@ -39,9 +39,10 @@ class ProductController extends Controller
 
     }
 
-    public function search(Request $request){
+    public function search(Request $request, $category){
 
-        $products = Product::whereHas('shelves',function($query) use ($request){
+        $category = explode('/',$category);
+        $products = Product::ofType(ucfirst($category[0]))->whereHas('shelves',function($query) use ($request){
             $query->where('size',$request->size)
                 ->where('brand',$request->brand)
                 ->where('type',$request->type);

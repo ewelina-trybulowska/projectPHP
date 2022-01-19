@@ -4,7 +4,7 @@
     <hr style="width: 100%"/>
 
         {{--  FILTER PANEL --}}
-        <form method="post" action="{{ route('products.search') }}">
+        <form method="post" action="{{ route('products.search', Request::path()) }}">
             @csrf
 {{--
             <div class="wrapper" style="overflow: hidden">
