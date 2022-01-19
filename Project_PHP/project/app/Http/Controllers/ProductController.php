@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -38,32 +39,16 @@ class ProductController extends Controller
 
     }
 
-    public function search(Request $request){
+    public function search(Request $request, $category){
 
-        //DZIALALO BEZ TYCH POLEK... - TERAZ ROZMIAR SIE ROZWALIL.
+        $category = explode('/',$category);
+        $products = Product::ofType(ucfirst($category[0]))->whereHas('shelves',function($query) use ($request){
+            $query->where('size',$request->size)
+                ->where('brand',$request->brand)
+                ->where('type',$request->type);
+        })->get();
 
-      /* $products=Product::where('category_id','=', '1')
-            ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
-            ->where('type', 'LIKE', '%' . $request->type . '%' )
-            ->where('size', 'LIKE', '%' . $request->size . '%' )->get();
-
-        return $products;*/
-
-        $products1=Product::where('category_id','=', '1')
-            ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
-            ->where('type', 'LIKE', '%' . $request->type . '%' );
-
-        $products2 = Product::ofType('Women')->
-        whereHas('shelves', function($query) use ($request) {
-              $query->where('size', 'LIKE', '%' . $request->size . '%' );});
-
-        $result=$products1->join($products2, 'id', '=', 'id')->get();
-
-       /* foreach ($products1 as $p){
-            echo $p->id;
-        }*/
-
-        return $result;
+        return $products;
     }
 
     public function show(Product $product)

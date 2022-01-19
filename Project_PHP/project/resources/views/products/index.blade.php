@@ -4,7 +4,7 @@
     <hr style="width: 100%"/>
 
         {{--  FILTER PANEL --}}
-        <form method="post" action="{{ route('products.search') }}">
+        <form method="post" action="{{ route('products.search', Request::path()) }}">
             @csrf
 
                 <div class="card" style="border-width: 3px; width:250px; float: left; margin-right: 80px; margin-left: 20px;">
