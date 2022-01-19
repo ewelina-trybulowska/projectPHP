@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -40,12 +41,11 @@ class ProductController extends Controller
 
     public function search(Request $request){
 
-        //DZIALALO BEZ TYCH POLEK... - TERAZ ROZMIAR SIE ROZWALIL.
-
-       $products=Product::where('category_id','=', '1')
-            ->where( 'brand', 'LIKE', '%' . $request->brand . '%' )
-            ->where('type', 'LIKE', '%' . $request->type . '%' )
-            ->where('size', 'LIKE', '%' . $request->size . '%' )->get();
+        $products = Product::whereHas('shelves',function($query) use ($request){
+            $query->where('size',$request->size)
+                ->where('brand',$request->brand)
+                ->where('type',$request->type);
+        })->get();
 
         return $products;
 
