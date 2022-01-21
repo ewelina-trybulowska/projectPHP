@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -43,6 +44,7 @@ class ReviewController extends Controller
         ]);
         $product = Product::query()->where('id', $product_id)->first();
         $review = new Review;
+        $review->author=Auth::user()->username;
         $review->title = $request->title;
         $review->text = $request->text;
         $r = $product->reviews()->save($review);
