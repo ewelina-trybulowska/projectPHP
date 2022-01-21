@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
             'street_address_2'=>['nullable','string', 'max:255'],
             'zip_code'=>['required', 'string', 'min:6', 'max:6'],
             'city'=>['required','string', 'max:255'],
-            'phone' => ['nullable','max:9', 'unique:users'],
+            'phone' => ['required','min:9','max:9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -75,6 +75,7 @@ class RegisteredUserController extends Controller
 
         $cart=new Cart();
         $cart->user_id=$user->id;
+        $cart->save();
 
         return redirect(RouteServiceProvider::HOME);
     }
