@@ -67,5 +67,10 @@ class UserSeeder extends Seeder
             'user_id' => 3
         ]);
 
+        DB::table('carts')->insert([
+            'user_id' => 3
+        ]);
+
+
     }
 }

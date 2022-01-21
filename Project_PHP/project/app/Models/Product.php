@@ -27,6 +27,10 @@ class Product extends Model
         return $this->hasMany(Shelf::class);
     }
 
+    public function carts(){
+        return $this->belongsToMany(Cart::class)->withPivot('total_product_price', 'total_product_amount');
+    }
+
     public function scopeAvailable($query){
         return $query->with('shelves')->has('shelves');
     }
