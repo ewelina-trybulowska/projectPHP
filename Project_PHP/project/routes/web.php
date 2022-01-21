@@ -35,6 +35,5 @@ Route::resource('/carts', \App\Http\Controllers\CartController::class);
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
-
 Route::resource('products.reviews', \App\Http\Controllers\ReviewController::class);
 Route::get('products/{product}/reviews/create', '\App\Http\Controllers\ReviewController@create')->middleware(['auth'])->name('products.reviews.create');

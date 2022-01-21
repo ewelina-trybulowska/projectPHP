@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index()
-    {
+    public function index(){
+        if(Auth::id()){
         $cart = User::find(Auth::id())->cart;
         $products=Cart::find($cart->id)->products;
+    }
+
         return view('carts.index', ['cart'=>$cart, 'products'=>$products]);
 
     }
