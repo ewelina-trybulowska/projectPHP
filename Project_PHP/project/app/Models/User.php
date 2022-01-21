@@ -68,6 +68,10 @@ class User extends Authenticatable
         return $query->where('role_id',$id);
     }
 
+    public function cart(){
+        return $this->hasOne(Cart::class);
+    }
+
     public function orders() {
         return $this->hasMany(HistoryOrder::class);
     }

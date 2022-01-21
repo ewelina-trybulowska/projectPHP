@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Cart;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class RegisteredUserController extends Controller
             'street_address_2'=>['nullable','string', 'max:255'],
             'zip_code'=>['required', 'string', 'min:6', 'max:6'],
             'city'=>['required','string', 'max:255'],
-            'phone' => ['nullable','min:9', 'max:9', 'unique:users'],
+            'phone' => ['nullable','max:9', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -71,6 +72,9 @@ class RegisteredUserController extends Controller
         $address->zip_code=$request->zip_code;
         $address->city=$request->city;
         $address->save();
+
+        $cart=new Cart();
+        $cart->user_id=$user->id;
 
         return redirect(RouteServiceProvider::HOME);
     }

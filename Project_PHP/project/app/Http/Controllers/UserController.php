@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user=auth()->user();
-        $address = User::find($user->id)->address;
+        $user=Auth::user();
+        $address = User::find(Auth::id())->address;
         return view('dashboard', ['user'=>$user, 'address'=>$address]);
     }
 

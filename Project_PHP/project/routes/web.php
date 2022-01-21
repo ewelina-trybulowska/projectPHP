@@ -31,7 +31,7 @@ Route::get('/men', '\App\Http\Controllers\ProductController@men')->name('product
 Route::get('{category}/search', '\App\Http\Controllers\ProductController@search')->name('products.search');
 Route::post('{category}/search', '\App\Http\Controllers\ProductController@search')->name('products.search');
 
-
+Route::resource('/carts', \App\Http\Controllers\CartController::class);
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
