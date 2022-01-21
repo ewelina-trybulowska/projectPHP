@@ -118,29 +118,41 @@
                 </tr>
             @endforeach
             </table>
-            <hr class="lav">
 
-            <table class="min-w-full bg-white divide-y divide-gray-200">
-                <tr>
-                    <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <table >
+                <tr >
+                    <td  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Total price of items:
-                    </th>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $cart->total_price }}</div>
                     </td>
 
-                    <td scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <td class="px-6 py-4 whitespace-nowrap" >
+                        <div  class="min-w-full bg-white divide-y divide-gray-200" >{{ $cart->total_price }}</div>
+                    </td>
+
+                    <td  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Total amount of items:
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ $cart->total_amount }}</div>
+                        <div  class="min-w-full bg-white divide-y divide-gray-200">{{ $cart->total_amount }}</div>
                     </td>
                 </tr>
+            </table>
+            <table>
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Discount code:
+                    </th>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <input type="text" id="discount" name="discount" style="border-width: 2px" placeholder="Enter your dicount code...">
+                    </td>
+                </tr>
+
+                <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <a class="button" href="">Order</a>
                 </td>
+                </tr>
 
             </table>
         </div>
