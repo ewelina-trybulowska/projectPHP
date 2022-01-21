@@ -12,5 +12,8 @@ class Review extends Model
                return $this->belongsTo(Product::class);
     }
 
+
+
+
  protected $fillable = ['title', 'text'];
 }

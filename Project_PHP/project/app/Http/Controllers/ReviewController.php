@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ReviewController extends Controller
 {
@@ -17,6 +20,7 @@ class ReviewController extends Controller
     public function index(Product $product)
     {
         $reviews = $product->reviews()->where('product_id', $product->id)->get();
+        $list='';
         return view('reviews.index', compact('product', 'reviews'));
     }
 
@@ -27,7 +31,22 @@ class ReviewController extends Controller
      */
     public function create(Product $product)
     {
-        return view('reviews.create', compact('product'));
+
+        $user_idd=Auth::id();
+        $product2=$product->id;
+        $czyjest = Review::query()->where('user_id', $user_idd)->where('product_id',$product2)->count();
+        if($czyjest>0){
+
+
+               return Redirect::back()->withErrors(['msg'=>"Sorry,you cannot add a review,you have already posted a comment about this product"]);
+        }
+        else{
+
+            return view('reviews.create', ['product'=>$product]);
+        }
+
+
+
     }
 
     /**
@@ -43,11 +62,15 @@ class ReviewController extends Controller
             'text' => 'required',
         ]);
         $product = Product::query()->where('id', $product_id)->first();
+
         $review = new Review;
         $review->author=Auth::user()->username;
         $review->title = $request->title;
         $review->text = $request->text;
-        $r = $product->reviews()->save($review);
+        $review->user_id= Auth::id();
+
+        $p = $product->reviews()->save($review);
+
        return redirect()->route('products.reviews.index',compact('product'));
 
     }
