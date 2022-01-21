@@ -53,8 +53,21 @@
                         {{ __('Create new review...') }}
                     </button>
                 </form>
+                <br>
 
             </div>
+
+            <div class="backside" style="background:#E6E6FA;padding: 10px 30px; width: 300px;">
+                <a href="{{ url()->previous() }}">Back to the product...</a>
+            </div>
+
+
+            <div class="error" style="background: #d34343; color: #a0aec0">
+                @if($errors->any())
+                    <p>{{$errors->first()}}</p>
+                @endif
+            </div>
+
         </div>
     </div>
 </x-shop>

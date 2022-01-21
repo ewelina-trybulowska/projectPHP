@@ -4,6 +4,7 @@
     <div class="col-sm-6 container shadow sm:rounded-lg border-gray-100" style="padding: 20px;">
 
         <div class="clearfix" >
+            <h2>Adding a review</h2>
 
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
             <form method="post" action="{{ route('products.reviews.store', $product) }}">
