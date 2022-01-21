@@ -32,6 +32,8 @@ Route::get('{category}/search', '\App\Http\Controllers\ProductController@search'
 Route::post('{category}/search', '\App\Http\Controllers\ProductController@search')->name('products.search');
 
 Route::resource('carts', \App\Http\Controllers\CartController::class);
+Route::get('/carts', '\App\Http\Controllers\CartController@addProductToCart')->name('carts.addProductToCart');
+Route::post('/carts', '\App\Http\Controllers\CartController@addProductToCart')->name('carts.addProductToCart');
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
