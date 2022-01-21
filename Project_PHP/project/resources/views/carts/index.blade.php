@@ -8,7 +8,15 @@
                 CART
             </h3>
             <hr class="lav">
-            <table class="min-w-full bg-white divide-y divide-gray-200">
+
+            @if(!count($products))
+
+                <h5 style="text-align: center">
+                    Cart is currently empty
+                </h5>
+            @else
+
+                <table class="min-w-full bg-white divide-y divide-gray-200">
 
                 <tr>
                     <th scope="col"
@@ -28,8 +36,8 @@
                         Total amount:
                     </th>
                 </tr>
+                    @foreach($products as $product)
 
-            @foreach($products as $product)
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ $product->brand }}</div>
@@ -46,7 +54,7 @@
                 </tr>
             @endforeach
             </table>
-
+            @endif
             <table >
                 <tr >
                     <td  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -84,10 +92,7 @@
 
             </table>
         </div>
-
     </div>
-
-
 
 </x-shop>
 

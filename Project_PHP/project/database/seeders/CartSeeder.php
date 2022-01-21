@@ -17,7 +17,7 @@ class CartSeeder extends Seeder
 
 
         DB::table('carts')->insert([
-            'user_id' => 3
+            'user_id' => null
         ]);
 
 
