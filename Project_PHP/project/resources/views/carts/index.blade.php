@@ -73,24 +73,50 @@
                     </td>
                 </tr>
             </table>
-            <table>
-                <tr>
-                    <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Discount code:
-                    </th>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <input type="text" id="discount" name="discount" style="border-width: 2px" placeholder="Enter your dicount code...">
-                    </td>
-                </tr>
+          {{--  <table>--}}
+            @if (!\Session::has('success'))
+                <form method="post" action="{{ route('carts.update', $cart) }}">
+                    @csrf
+                    @method("PUT")
+                    <table>
+                    <tr>
+                     <td class="px-6 py-4 whitespace-nowrap">
+                        <label for="discount">Discount Code:</label>
+                        <input type="text" id="discount" name="discount" style="border-width: 2px; " placeholder="Enter..." >
+                     </td>
+                     <td>
+                     <td>
+                        <input type="submit" value="Submit" >
+                     </td>
+                    </tr>
+                    </table>
+                </form>
+            @endif
 
-                <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <a class="button" href="{{route("carts.show",$cart)}}">Order</a>
-                </td>
-                </tr>
 
-            </table>
+                    <div class="px-6 py-4 whitespace-nowrap">
+                            <a class="button" href="{{route("carts.show",$cart)}}">Order</a>
+                    </div>
+
+
+
+            <div class="error" style="background: #d34343; color: white">
+                @if($errors->any())
+                    <p>{{$errors->first()}}</p>
+                @endif
+            </div>
+           {{-- <div class="message" style="background: #0c8433 ; color: white">
+                @if($messages->any())
+                    <p>{{$messages->first()}}</p>
+                @endif
+            </div>--}}
+            @if (\Session::has('success'))
+                <div class="alert alert-success">
+
+                        {!! \Session::get('success') !!}
+
+                </div>
+            @endif
         </div>
     </div>
 
