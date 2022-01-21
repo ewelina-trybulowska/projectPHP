@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -54,7 +56,16 @@ class CartController extends Controller
 
     public function show($cart)
     {
-        return view("carts.show");
+        $products=Cart::find($cart)->products;
+
+        if(!count($products)){
+            return Redirect::back()->withErrors(['msg'=>"You have empty cards! Back to main website to buy something! :)"]);
+        }
+        else{
+
+            return view("carts.show");
+        }
+
     }
 
     public function create()
@@ -68,9 +79,17 @@ class CartController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Cart $cart)
     {
-        //
+
+            if (!strcmp($request->discount, "WINTER")) {
+                $cart->total_price = $cart->total_price * 0.2;
+                $cart->save();
+                return redirect()->route('carts.index', ['cart' => $cart])->with('success', 'DISCOUNT CODE ACCEPTED :)');;
+            } else {
+
+                return Redirect::back()->withErrors(['msg' => "This code is invalid"]);
+            }
     }
 
 

@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
-            $table->integer('total_price')->default('0');
+            $table->double('total_price')->default('0');
             $table->integer('total_amount')->default('0');
         });
     }

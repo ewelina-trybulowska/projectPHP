@@ -15,9 +15,9 @@ class CartSeeder extends Seeder
     public function run()
     {
 
-
         DB::table('carts')->insert([
-            'user_id' => null
+            'user_id' => null,
+            'total_price'=>200
         ]);
 
 
