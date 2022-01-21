@@ -37,10 +37,17 @@
                     </select>
                 </div>
                 <br>
-
-                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568">OPINIONS</a>
                 <br>
+
+                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568; background-color:#d4a8ec; padding: 10px 30px;">SEE OPINIONS</a>
+                <br>
+                <br>
+
+                <a href="{{ url()->previous() }}" style="background:#E6E6FA;padding: 10px 30px; width: 600px;">Return to products list</a>
+
             </div>
+
+
             <div class="Cart">
                 {{-- <button class="button-53" role="button" href="{{route('koszyk.show')}}">Dodaj do koszyka</button>--}}
                 <button class="button-53" role="button">ADD TO CARD</button>
