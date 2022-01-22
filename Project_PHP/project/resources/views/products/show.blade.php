@@ -43,7 +43,7 @@
                 <br>
                 <br>
 
-                <a href="{{ url()->previous() }}" style="background:#E6E6FA;padding: 10px 30px; width: 600px;">Return to products list</a>
+                <a href="{{ url("/$category") }}" style="background:#E6E6FA;padding: 10px 30px; width: 600px;">Return to products list</a>
 
             </div>
 

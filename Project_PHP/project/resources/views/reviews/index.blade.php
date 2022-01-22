@@ -58,7 +58,7 @@
             </div>
 
             <div class="backside" style="background:#E6E6FA;padding: 10px 30px; width: 300px;">
-                <a href="{{ url()->previous() }}">Back to the product...</a>
+                <a href="{{ route('products', ['products' => $product->id])}}">Back to the product...</a>
             </div>
 
 

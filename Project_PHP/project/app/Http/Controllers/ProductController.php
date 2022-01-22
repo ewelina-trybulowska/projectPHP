@@ -42,13 +42,15 @@ class ProductController extends Controller
                 ->where('brand',$request->brand)
                 ->where('type',$request->type);
         })->get();
-        return view('products.search', ['products' => $products]);
+        return view('products.search', ['products' => $products, 'category'=>$category]);
 
     }
 
     public function show(Product $product)
     {
-        return view('products.show')->withProduct($product);
+        $category=strtolower($product->category->name);
+
+        return view('products.show')->withProduct($product)->withCategory($category);
     }
     public function store(){
 
