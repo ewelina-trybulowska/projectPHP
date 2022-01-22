@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
                 $table->integer('price');
                 $table->text('description');
                 $table->unsignedBigInteger('category_id');
-                $table->foreign('category_id')->references('id')->on('categories') ;
+                $table->foreign('category_id')->references('id')->on('categories');
                 $table->unsignedBigInteger('image_id');
-                $table->foreign('image_id')->references('id')->on('images');
+                $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
                 $table->timestamps();
             });
 

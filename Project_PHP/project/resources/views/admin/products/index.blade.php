@@ -1,28 +1,42 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users managment') }}
+            {{ __('Products managment') }}
         </h2>
     </x-slot>
 
+    <a class="text-sm text-gray-600 hover:text-gray-900 create-a" href="{{ route('admin.products.create') }}">
+        <x-button class="ml-4 create-b">
+            {{ __('Create new') }}
+        </x-button>
+    </a>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h3>Users</h3>
+            <h3>Women products</h3>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @if($users->isEmpty())
-                        <p class="p-6">No users in database.</p>
+                    @if($women_products->isEmpty())
+                        <p class="p-6">No products in database.</p>
                     @else
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Username
+                                    ID
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    email
+                                    Brand
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Type
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Image
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Details</span>
@@ -30,16 +44,24 @@
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach($users as $user)
+                            @foreach($women_products as $product)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-500">{{ $user->username }}</div>
+                                        <div class="text-sm text-gray-500">{{ $product->id }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $user->email }}</div>
+                                        <div class="text-sm text-gray-500">{{ $product->brand }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-500">{{ $product->type }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-500">
+                                            <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}" style="width: 110px; height: 90px;"/>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('admin.users.show', $user) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
+                                        <a href="{{ route('admin.products.show', $product) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -51,10 +73,10 @@
 
             <br>
 
-            <h3>Admins</h3>
+            <h3>Men products</h3>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @if($admins->isEmpty())
+                    @if($men_products->isEmpty())
                         <p class="p-6">No admins in database.</p>
                     @else
                         <table class="min-w-full divide-y divide-gray-200">
@@ -62,11 +84,19 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Username
+                                    ID
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    email
+                                    Brand
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Type
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Image
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Details</span>
@@ -74,16 +104,24 @@
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach($admins as $admin)
+                            @foreach($men_products as $product)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-500">{{ $admin->username }}</div>
+                                        <div class="text-sm text-gray-500">{{ $product->id }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $admin->email }}</div>
+                                        <div class="text-sm text-gray-500">{{ $product->brand }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-500">{{ $product->type }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-500">
+                                            <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}" style="width: 110px; height: 90px;"/>
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('admin.users.show', $admin) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
+                                        <a href="{{ route('admin.products.show', $product) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
                                     </td>
                                 </tr>
                             @endforeach

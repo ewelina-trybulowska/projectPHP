@@ -16,11 +16,14 @@ class ImageSeeder extends Seeder
     public function run()
     {
         DB::table('images')->insert([
-            ['file_name' => '/Images/damskie/kozaki1.jpg'],
-            ['file_name' => '/Images/damskie/kozaki2.jpg'],
-            ['file_name' => '/Images/damskie/szpilki.jpg'],
-            ['file_name' => '/Images/meskie/meskie1.jpg'],
-            ['file_name' => '/Images/meskie/meskie2.jpg'],
+            ['file_name' => 'Women/Women.jpg'],
+            ['file_name' => 'Men/Men.jpg'],
+            ['file_name' => 'Women/kozaki2.jpg'],
+            ['file_name' => 'Women/kozaki1.jpg'],
+            ['file_name' => 'Women/kozaki2.jpg'],
+            ['file_name' => 'Women/szpilki.jpg'],
+            ['file_name' => 'Men/meskie1.jpg'],
+            ['file_name' => 'Men/meskie2.jpg'],
 
         ]);
     }

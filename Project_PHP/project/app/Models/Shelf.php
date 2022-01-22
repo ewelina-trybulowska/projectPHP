@@ -9,6 +9,12 @@ class Shelf extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'product_id',
+        'size',
+        'amount'
+        ];
+
     public function product() {
         return $this->belongsTo(Product::class);
     }
