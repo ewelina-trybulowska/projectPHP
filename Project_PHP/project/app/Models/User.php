@@ -63,9 +63,17 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
 	}
 
+
+
+
+
     public function scopeOfType($query, $type){
         $id = DB::table('roles')->where('name', $type)->first()->id;
         return $query->where('role_id',$id);
+    }
+
+    public function cart(){
+        return $this->hasOne(Cart::class);
     }
 
     public function orders() {

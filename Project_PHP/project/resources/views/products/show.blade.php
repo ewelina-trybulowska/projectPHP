@@ -27,20 +27,27 @@
                 <div class="custom-select" style="width:200px;">
                     <select style="background-color:#f6d8df;">
                         <option value="0" >Select:</option>
-                        <option value="37">37</option>
-                        <option value="38">38</option>
-                        <option value="39">39</option>
-                        <option value="40">40</option>
-                        <option value="41">41</option>
-                        <option value="42">42</option>
-                        <option value="43">43</option>
+
+                        @foreach( \App\Models\Shelf::where('product_id', $product->id)->get() as $row)
+                            <option name="size" value="{{$row->size}}">{{$row->size}}</option>
+                        @endforeach
+
+
+
                     </select>
                 </div>
                 <br>
-
-                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568">OPINIONS</a>
                 <br>
+
+                <a href="{{ route('products.reviews.index', $product)}}" style="color: #4a5568; background-color:#d4a8ec; padding: 10px 30px;">SEE OPINIONS</a>
+                <br>
+                <br>
+
+                <a href="{{ url()->previous() }}" style="background:#E6E6FA;padding: 10px 30px; width: 600px;">Return to products list</a>
+
             </div>
+
+
             <div class="Cart">
                 {{-- <button class="button-53" role="button" href="{{route('koszyk.show')}}">Dodaj do koszyka</button>--}}
                 <button class="button-53" role="button">ADD TO CARD</button>
