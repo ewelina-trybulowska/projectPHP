@@ -4,6 +4,8 @@
         <div class="clearfix" >
 
             <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}" style="width: 380px; height: 300px; float: left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
+            <form  method="POST" action ="{{route('carts.store', $product)}}">
+                @csrf
             <div class="description" style="float: left; margin: 30px;" >
                 <h2>{{ $product->brand . ' ' . $product->model }}</h2>
                 <h5 style="font-family: Apple,serif">${{$product->price }}</h5>
@@ -12,8 +14,6 @@
                 <hr>
                 <h4>PRODUCT INFO</h4>
                 <h6 style="font-size: small">{{ $product->description }}</h6>
-
-
 
                 <br>
                 <label class='muted'>Quantity:</label>
@@ -49,9 +49,9 @@
 
 
             <div class="Cart">
-                {{-- <button class="button-53" role="button" href="{{route('koszyk.show')}}">Dodaj do koszyka</button>--}}
                 <button class="button-53" role="button">ADD TO CARD</button>
             </div>
+            </form>
             <br>
             <br>
 

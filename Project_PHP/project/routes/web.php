@@ -56,8 +56,8 @@ Route::post('{category}/search', '\App\Http\Controllers\ProductController@search
 
 
 Route::resource('carts', \App\Http\Controllers\CartController::class);
-/*Route::get('/carts', '\App\Http\Controllers\CartController@addProductToCart')->name('carts.addProductToCart');
-Route::post('/carts', '\App\Http\Controllers\CartController@addProductToCart')->name('carts.addProductToCart');*/
+Route::post('products/{product}/add', '\App\Http\Controllers\CartController@store')->name('carts.store');
+Route::get('products/{product}/add', '\App\Http\Controllers\CartController@store')->name('carts.store');
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
