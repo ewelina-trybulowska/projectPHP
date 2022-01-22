@@ -20,23 +20,42 @@ class OrderController extends Controller
      */
     public function index()
     {
+
+            $order = new Order();
+            $order->user_id = Auth::id();
+            $order->save();
+            $products = User::find(Auth::id())->cart->products;
+
+            foreach ($products as $p) {
+
+                DB::table('order_products')->insert([
+                    'order_id' => $order->id,
+                    'product_id' => $p->id,
+                    'tot_price' => $p->pivot->total_product_price,
+                    'tot_amount' => $p->pivot->total_product_amount
+                ]);
+            }
+
+
+            return view("orders.show", ['order' => $order]);
+
+         /*   $order = new Order();
+            $order->id = rand(100,200);
+            $order->user_id = null;
+            $order->save();
+            return view("orders.show", ['order' => $order]);*/
+
+
+    }
+
+    public function withoutLoginIndex($cart){
+
         $order = new Order();
-        $order->user_id=Auth::id();
+        $order->id = rand(100,200);
+        $order->user_id = null;
         $order->save();
-        $products = User::find(Auth::id())->cart->products;
 
-        foreach($products as $p) {
-
-                  DB::table('order_products')->insert([
-                      'order_id' => $order->id,
-                      'product_id' =>$p->id,
-                      'tot_price'=>$p->pivot->total_product_price,
-                      'tot_amount'=> $p->pivot->total_product_amount
-                  ]);
-              }
-
-        return view("orders.show",['order'=>$order]);
-
+        return view("orders.show", ['order' => $order]);
     }
 
     /**

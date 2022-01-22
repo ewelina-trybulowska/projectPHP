@@ -110,7 +110,7 @@
 
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
             @if (!(\Auth::id()))
-                <form method="POST" action="{{route("carts.show",$cart)}}">
+                <form method="post" action="{{route("orders.withoutLoginIndex",$cart)}}">
                     @csrf
 
                     <div>

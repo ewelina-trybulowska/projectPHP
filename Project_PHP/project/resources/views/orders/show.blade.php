@@ -9,7 +9,7 @@
             <hr>
 
 
-            <h5>Your order number is: {{$order->id}}!</h5>
+            <h5>Your order number is: {{$order->id}}</h5>
             Hi !
             <div class="details_order">
             Thank you for the order. The order is suspended until the payment is credited.
