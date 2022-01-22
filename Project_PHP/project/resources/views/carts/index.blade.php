@@ -151,6 +151,7 @@
                         <x-label for="email" :value="__('Email')" />
 
                         <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+
                     </div>
                     <div><br></div>
 
@@ -165,7 +166,7 @@
             @if ((\Auth::id()))
                 <div class="px-6 py-4 whitespace-nowrap">
 
-                    <a class="button" href="{{route("carts.show",$cart)}}">Order</a>
+                        <a class="button" href="{{route("orders.index")}}">Order</a>
 
                 </div>
             @endif

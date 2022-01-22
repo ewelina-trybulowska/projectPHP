@@ -52,6 +52,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
     public function isAdmin(){
         if($this->role->name == "Admin"){
@@ -77,7 +81,4 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class);
     }
 
-    public function orders() {
-        return $this->hasMany(HistoryOrder::class);
-    }
 }
