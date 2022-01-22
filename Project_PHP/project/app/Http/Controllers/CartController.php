@@ -98,7 +98,7 @@ class CartController extends Controller
     }
 
 
-    public function destroy(Product $product)
+    public function destroy(Request $request,Product $product)
     {
 
     }

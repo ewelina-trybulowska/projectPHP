@@ -26,6 +26,10 @@
                 <tr>
                     <th scope="col"
                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Brand:
                     </th>
                     <th scope="col"
@@ -44,6 +48,11 @@
                     @foreach($products as $product)
 
                 <tr>
+                 <td class="px-6 py-4 whitespace-nowrap">
+                         <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}"
+                              style="width: 120px; height: 95px; float: left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                              0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
+                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ $product->brand }}</div>
                     </td>
