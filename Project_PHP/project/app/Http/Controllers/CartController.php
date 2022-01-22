@@ -89,7 +89,7 @@ class CartController extends Controller
     {
 
             if (!strcmp($request->discount, "WINTER")) {
-                $cart->total_price = $cart->total_price * 0.2;
+                $cart->total_price = $cart->total_price * 0.8;
                 $cart->save();
                 return redirect()->route('carts.index', ['cart' => $cart])->with('success', 'DISCOUNT CODE ACCEPTED :)');;
             } else {

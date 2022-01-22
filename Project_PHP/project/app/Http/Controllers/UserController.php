@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,9 @@ class UserController extends Controller
     {
         $user=Auth::user();
         $address = User::find(Auth::id())->address;
-        return view('dashboard', ['user'=>$user, 'address'=>$address]);
+        $orders=Order::all()->where("user_id",$user->id);
+      //  return $orders;
+        return view('dashboard', ['user'=>$user, 'address'=>$address,'orders'=>$orders]);
     }
 
     /**

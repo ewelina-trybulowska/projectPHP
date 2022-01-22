@@ -9,11 +9,7 @@
             <hr>
 
 
-{{--
-            TO JEST DO ZMIANY
---}}
-
-            <h5>Your order number is: {{rand(11111111,99999999)}}!</h5>
+            <h5>Your order number is: {{$order->id}}!</h5>
             Hi !
             <div class="details_order">
             Thank you for the order. The order is suspended until the payment is credited.
@@ -33,6 +29,16 @@
 
 
         </div>
+
+{{--
+Nie wiadomo jeszcze czy dziala
+--}}
+        @if (Auth::check())
+        <div class="backside" style="background:#E6E6FA;padding: 10px 30px; width: 300px;">
+            <a href="{{ route('dashboard')}}">Go to your account!</a>
+        </div>
+        @endif
+
 
     </div>
 </x-shop>

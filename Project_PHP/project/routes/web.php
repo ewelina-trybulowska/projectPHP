@@ -68,8 +68,5 @@ Route::get('products/{products}', 'App\Http\Controllers\ProductController@show')
 
 Route::post('carts/{cart}', 'App\Http\Controllers\CartController@show')->name('carts.show');
 
-
-
-
-
-
+Route::get('orders/{orders}', '\App\Http\Controllers\OrderController@showProducts')->name('orders.showProducts');
+Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->middleware(['auth'])->name('orders.index');
