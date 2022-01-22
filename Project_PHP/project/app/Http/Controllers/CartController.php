@@ -34,8 +34,9 @@ class CartController extends Controller
         $qty=$request->quantity;
 
         if($cart->products->contains($product->id)){
-            $tpp=$product->pivot->total_product_price+($product->price)*$qty;
-            $tpa=$product->pivot->total_product_amount+$qty;
+            $p=$cart->products()->find($product->id);
+            $tpp=$p->pivot->total_product_price+($product->price)*$qty;
+            $tpa=$p->pivot->total_product_amount+$qty;
             $cart->products()->updateExistingPivot($product->id, ['total_product_price' => $tpp, 'total_product_amount' => $tpa]);
         }
         else{
@@ -55,9 +56,8 @@ class CartController extends Controller
         else $cart=Cart::find(1);
         $cart->products()->detach($product->id);
 
-        $products=Cart::find($cart->id)->products;
-        //$cart->total_amount-=$product->pivot->total_product_amount;
-        //$cart->total_price-=$product->pivot->total_product_price;
+        $cart->total_amount=0;
+        $cart->total_price=0;
         $cart->save();
         $products=Cart::find($cart->id)->products;
         return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
@@ -98,8 +98,8 @@ class CartController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+
     }
 }
