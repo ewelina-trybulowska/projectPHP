@@ -13,9 +13,11 @@
             </article>
             <div> <br> </div>
 
-            <a href="{{url()->previous()}}" style="text-align:center;padding: 5px; background-color: lavenderblush; border-width: 2px; text-decoration: none">RESET FILTER</a>
+            <a href="{{url("/$category")}}" style="text-align:center;padding: 5px; background-color: lavenderblush; border-width: 2px; text-decoration: none">RESET FILTER</a>
             <div> <br> </div>
         </div>
+
+
 
     {{-- PRODUCT --}}
 
