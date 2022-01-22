@@ -3,7 +3,8 @@
     <h3 style="text-align: center; font-size: small">{{$products->count()}} products are available</h3>
     <hr style="width: 100%"/>
 
-        {{--  FILTER PANEL --}}
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    {{--  FILTER PANEL --}}
         <form method="post" action="{{ route('products.search', Request::path()) }}">
             @csrf
 
@@ -77,21 +78,23 @@
                                 <label for="#size">
                                     <select class="custom-select mr-sm-2 sm:rounded-lg" name="size"
                                             style="border-width: 2px; margin: 20px 65px">
-                                        <option selected>Choose</option>
+                                        <option value="" >Select:</option>
                                         <option name="size" value="37">37</option>
                                         <option name="size" value="38">38</option>
                                         <option name="size" value="39">39</option>
                                         <option name="size" value="40">40</option>
                                         <option name="size" value="41">41</option>
                                         <option name="size" value="42">42</option>
+                                        <option name="size" value="43">43</option>
                                     </select>
                                 </label>
 
                         </div>
                     </article>
                     <div class="submit" style="margin: 20px 50px; padding: 10px 30px;">
-                        <button id="but" style="background-color: lavenderblush; border-width: 2px">SEARCH</button>
+                        <button id="but" style="background-color: lavenderblush; border-width: 2px" >SEARCH</button>
                     </div>
+
 
 
 
