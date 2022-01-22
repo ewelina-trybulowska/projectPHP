@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,7 +67,13 @@ Route::get('products/{product}/reviews/create', '\App\Http\Controllers\ReviewCon
 
 Route::get('products/{products}', 'App\Http\Controllers\ProductController@show')->name('products');
 
-Route::post('carts/{cart}', 'App\Http\Controllers\CartController@show')->name('carts.show');
+/*Route::post('carts/{cart}', 'App\Http\Controllers\CartController@show')->name('carts.show');*/
 
 Route::get('orders/{orders}', '\App\Http\Controllers\OrderController@showProducts')->name('orders.showProducts');
-Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->middleware(['auth'])->name('orders.index');
+/*Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index')->middleware(['prevent-back-history']);*/
+/*Route::post('orders/{orders}', '\App\Http\Controllers\OrderController@withoutLoginIndex')->name('orders.withoutLoginIndex')->middleware(['prevent-back-history']);*/
+
+
+Route::get('orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+Route::post('orders/{orders}', '\App\Http\Controllers\OrderController@withoutLoginIndex')->middleware(\App\Http\Middleware\PreventBackHistory::class)->name('orders.withoutLoginIndex');
+
