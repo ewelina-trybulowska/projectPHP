@@ -118,7 +118,6 @@
 
                         <x-input id="street_address_1" class="block mt-1 w-full" type="text" name="street_address_1" :value="old('street_address_1')"  required  autofocus />
                     </div>
-
                     <!-- Street Address 2 -->
                     <div>
                         <x-label for="street_address_2" :value="__('Street Address-more info')" />
@@ -148,11 +147,12 @@
                     </div>
 
                     <!-- Email Address -->
-                    <div class="mt-4">
+                    <div>
                         <x-label for="email" :value="__('Email')" />
 
                         <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                     </div>
+                    <div><br></div>
 
                     <x-button  >
                         <a class="button">Order</a>
