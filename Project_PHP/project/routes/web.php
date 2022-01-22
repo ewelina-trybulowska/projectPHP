@@ -65,3 +65,11 @@ Route::resource('products.reviews', \App\Http\Controllers\ReviewController::clas
 Route::get('products/{product}/reviews/create', '\App\Http\Controllers\ReviewController@create')->middleware(['auth'])->name('products.reviews.create');
 
 Route::get('products/{products}', 'App\Http\Controllers\ProductController@show')->name('products');
+
+Route::post('carts/{cart}', 'App\Http\Controllers\CartController@show')->name('carts.show');
+
+
+
+
+
+

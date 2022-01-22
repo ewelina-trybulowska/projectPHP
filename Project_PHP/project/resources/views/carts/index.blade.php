@@ -108,10 +108,67 @@
                 </form>
             @endif
 
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            @if (!(\Auth::id()))
+                <form method="POST" action="{{route("carts.show",$cart)}}">
+                    @csrf
 
-                    <div class="px-6 py-4 whitespace-nowrap">
-                            <a class="button" href="{{route("carts.show",$cart)}}">Order</a>
+                    <div>
+                        <x-label for="street_address_1" :value="__('Street Address')" />
+
+                        <x-input id="street_address_1" class="block mt-1 w-full" type="text" name="street_address_1" :value="old('street_address_1')"  required  autofocus />
                     </div>
+
+                    <!-- Street Address 2 -->
+                    <div>
+                        <x-label for="street_address_2" :value="__('Street Address-more info')" />
+
+                        <x-input id="street_address_2" class="block mt-1 w-full" type="text" name="street_address_2" :value="old('street_address_2')"   autofocus />
+                    </div>
+
+                    <!-- Zip code -->
+                    <div>
+                        <x-label for="zip_code" :value="__('Zip code')" />
+
+                        <x-input id="zip_code" class="block mt-1 w-full" type="text" name="zip_code" :value="old('zip_code')" required  autofocus />
+                    </div>
+
+                    <!-- City -->
+                    <div>
+                        <x-label for="city" :value="__('City')" />
+
+                        <x-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')" required  autofocus />
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <x-label for="phone" :value="__('Phone')" />
+
+                        <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus />
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <x-label for="email" :value="__('Email')" />
+
+                        <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    </div>
+
+                    <x-button  >
+                        <a class="button">Order</a>
+                    </x-button>
+
+                </form>
+            @endif
+
+
+            @if ((\Auth::id()))
+                <div class="px-6 py-4 whitespace-nowrap">
+
+                    <a class="button" href="{{route("carts.show",$cart)}}">Order</a>
+
+                </div>
+            @endif
 
 
 
@@ -120,11 +177,7 @@
                     <p>{{$errors->first()}}</p>
                 @endif
             </div>
-           {{-- <div class="message" style="background: #0c8433 ; color: white">
-                @if($messages->any())
-                    <p>{{$messages->first()}}</p>
-                @endif
-            </div>--}}
+
             @if (\Session::has('success'))
                 <div class="alert alert-success">
 

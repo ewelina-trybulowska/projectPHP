@@ -71,11 +71,11 @@ class CartController extends Controller
             return Redirect::back()->withErrors(['msg'=>"You have empty cards! Back to main website to buy something! :)"]);
         }
         else{
-
-            return view("carts.show");
+                return view("carts.show");
         }
 
     }
+
 
     public function create()
     {
