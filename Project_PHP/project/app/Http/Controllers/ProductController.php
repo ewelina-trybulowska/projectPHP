@@ -37,6 +37,11 @@ class ProductController extends Controller
 
     public function search(Request $request, $category){
 
+        $this->validate($request, [
+            'brand' => 'required',
+            'type' => 'required',
+            'size' => 'required',
+        ]);
         $products = Product::ofType(ucfirst($category))->whereHas('shelves',function($query) use ($request){
             $query->where('size',$request->size)
                 ->where('brand',$request->brand)
