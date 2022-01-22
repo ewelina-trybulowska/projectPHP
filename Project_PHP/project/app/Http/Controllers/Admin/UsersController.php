@@ -95,7 +95,7 @@ class UsersController extends Controller
         $user->role_id = Role::where('name',$request->role)->get()->first()->id;
         $user->save();
 
-        return redirect()->route('users.show', $user);
+        return redirect()->route('admin.users.show', $user);
     }
 
     /**
@@ -108,6 +108,6 @@ class UsersController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 }

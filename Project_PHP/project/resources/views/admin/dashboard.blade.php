@@ -15,11 +15,17 @@
         </div>
         <br>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('users.index') }}">
-                    <x-button class="ml-4">
-                    {{ __('Users managment') }}
-                    </x-button>
-                </a>
+            <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('admin.users.index') }}">
+                <x-button class="ml-4">
+                {{ __('Users managment') }}
+                </x-button>
+            </a>
+            <a class="text-sm text-gray-600 hover:text-gray-900" href="{{ route('admin.products.index') }}">
+                <x-button class="ml-4">
+                    {{ __('Products managment') }}
+                </x-button>
+            </a>
+
         </div>
     </div>
 </x-app-layout>

@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
             'description' => 'Brown boots for elegant women.',
             'price' => 120,
             'category_id' => $category_id1,
-            'image_id' => DB::table('images')->where('file_name',  '/Images/damskie/kozaki1.jpg')->first()->id,
+            'image_id' => DB::table('images')->where('file_name',  'Women/kozaki1.jpg')->first()->id,
 
         ]);
         DB::table('products')->insert([
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
             'description' => 'Brown boots for elegant women.',
             'price' => 100,
             'category_id' => $category_id1,
-            'image_id' => DB::table('images')->where('file_name',  '/Images/damskie/kozaki2.jpg')->first()->id,
+            'image_id' => DB::table('images')->where('file_name',  'Women/kozaki2.jpg')->first()->id,
 
         ]);
         DB::table('products')->insert([
@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
             'description' => 'Yellow heels for every women.',
             'price' => 80,
             'category_id' => $category_id1,
-            'image_id' => DB::table('images')->where('file_name',  '/Images/damskie/szpilki.jpg')->first()->id,
+            'image_id' => DB::table('images')->where('file_name',  'Women/szpilki.jpg')->first()->id,
 
         ]);
 
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
             'description' => 'Brown elegant shoes for men.',
             'price' => 77,
             'category_id' => $category_id2,
-            'image_id' => DB::table('images')->where('file_name',  '/Images/meskie/meskie1.jpg')->first()->id,
+            'image_id' => DB::table('images')->where('file_name',  'Men/meskie1.jpg')->first()->id,
 
         ]);
 
@@ -61,7 +61,7 @@ class ProductSeeder extends Seeder
             'description' => 'Sneakers for men',
             'price' => 96,
             'category_id' => $category_id2,
-            'image_id' => DB::table('images')->where('file_name',  '/Images/meskie/meskie2.jpg')->first()->id,
+            'image_id' => DB::table('images')->where('file_name',  'Men/meskie2.jpg')->first()->id,
 
         ]);
     }

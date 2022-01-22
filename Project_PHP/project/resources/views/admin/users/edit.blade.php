@@ -12,7 +12,7 @@
 
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="post" action="{{ route('users.update', $user) }}">
+                    <form method="post" action="{{ route('admin.users.update', $user) }}">
 
                         @csrf
                         @method("PUT")

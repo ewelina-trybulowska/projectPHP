@@ -106,7 +106,7 @@
                     @foreach($products as $product)
                         <div class="img-container">
 
-                        <img src="{{ url('/') }}{{ $product->image->file_name}}"
+                        <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}"
                                  style="width: 380px; height: 300px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
 
                             <div class="details" style="margin-top: 20px">
