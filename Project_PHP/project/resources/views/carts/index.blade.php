@@ -16,6 +16,11 @@
                 </h5>
             @else
 
+
+                <div class="px-6 py-4 whitespace-nowrap" >
+                    <a class="button" style="margin-right: 10px" href="{{route("carts.edit",$products[0])}}">Clear cart</a>
+                </div>
+
                 <table class="min-w-full bg-white divide-y divide-gray-200">
 
                 <tr>
@@ -50,9 +55,6 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ $product->pivot->total_product_amount }}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a class="button" href="{{route("carts.edit",$product)}}">x</a>
                     </td>
 
                 </tr>
