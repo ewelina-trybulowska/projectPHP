@@ -26,32 +26,41 @@ class CartController extends Controller
 
     }
 
-    public function store(Request $request, $cart)
+    public function store(Request $request, Product $product) //add product to cart
     {
-
-    }
-
-    public function addProductToCart($product, $quantity){
         if(Auth::id()) $cart = User::find(Auth::id())->cart;
         else $cart=Cart::find(1);
 
+        $qty=$request->quantity;
+
         if($cart->products->contains($product->id)){
-            $product->pivot->total_product_price+=($product->price)*$quantity;
-            $product->pivot->total_product_amount+=$quantity;
+            $tpp=$product->pivot->total_product_price+($product->price)*$qty;
+            $tpa=$product->pivot->total_product_amount+$qty;
+            $cart->products()->updateExistingPivot($product->id, ['total_product_price' => $tpp, 'total_product_amount' => $tpa]);
         }
         else{
-            $cart->products()->attach($product->id, ['total_product_price' => ($product->price)*$quantity, 'total_product_amount' => $quantity]);
+            $cart->products()->attach($product->id, ['total_product_price' => ($product->price)*$qty, 'total_product_amount' => $qty]);
         }
 
-        $cart->total_amount+=$quantity;
-        $cart->total_price+=($product->price)*$quantity;
+        $cart->total_price+=($product->price)*$qty;
+        $cart->total_amount+=$qty;
+        $cart->save();
+        $product->save();
         $products=Cart::find($cart->id)->products;
-        return view('carts.index', ['cart'=>$cart, 'products'=>$products]);
+        return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
     }
 
-    public function deleteProductFromCart($product_id){
-        $cart = User::find(Auth::id())->cart;
-        $cart->products()->detach($product_id);
+    public function edit(Product $product){ //delete product from cart
+        if(Auth::id()) $cart = User::find(Auth::id())->cart;
+        else $cart=Cart::find(1);
+        $cart->products()->detach($product->id);
+
+        $products=Cart::find($cart->id)->products;
+        //$cart->total_amount-=$product->pivot->total_product_amount;
+        //$cart->total_price-=$product->pivot->total_product_price;
+        $cart->save();
+        $products=Cart::find($cart->id)->products;
+        return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
     }
 
     public function show($cart)
@@ -73,10 +82,6 @@ class CartController extends Controller
         //
     }
 
-    public function edit($id)
-    {
-        //
-    }
 
 
     public function update(Request $request, Cart $cart)

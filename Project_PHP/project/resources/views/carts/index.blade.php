@@ -51,6 +51,10 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ $product->pivot->total_product_amount }}</div>
                     </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <a class="button" href="{{route("carts.edit",$product)}}">x</a>
+                    </td>
+
                 </tr>
             @endforeach
             </table>
