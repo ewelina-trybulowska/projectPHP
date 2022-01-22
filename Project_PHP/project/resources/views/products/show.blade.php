@@ -25,13 +25,12 @@
                 <label class='muted'>Select your size: :</label>
                 <br>
                 <div class="custom-select" style="width:200px;">
-                    <select style="background-color:#f6d8df;">
-                        <option value="0" >Select:</option>
+                    <select id="ddlShoes" style="background-color:#f6d8df;">
+                        <option value="" >Select:</option>
 
                         @foreach( \App\Models\Shelf::where('product_id', $product->id)->get() as $row)
                             <option name="size" value="{{$row->size}}">{{$row->size}}</option>
                         @endforeach
-
 
 
                     </select>
@@ -49,8 +48,20 @@
 
 
             <div class="Cart">
-                <button class="button-53" role="button">ADD TO CARD</button>
+                <button class="button-53" role="button" onclick="return Validate()">ADD TO CARD</button>
             </div>
+
+                <script type="text/javascript">
+                    function Validate() {
+                        var ddlShoes = document.getElementById("ddlShoes");
+                        if (ddlShoes.value == "") {
+
+                            alert("Please choose shoe size ");
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
             </form>
             <br>
             <br>

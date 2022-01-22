@@ -71,6 +71,7 @@ class CartController extends Controller
             return Redirect::back()->withErrors(['msg'=>"You have empty cards! Back to main website to buy something! :)"]);
         }
         else{
+            $this->edit($products[0]);
                 return view("carts.show");
         }
 
