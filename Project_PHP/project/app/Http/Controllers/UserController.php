@@ -20,7 +20,7 @@ class UserController extends Controller
         $user=Auth::user();
         $address = User::find(Auth::id())->address;
         $orders=Order::all()->where("user_id",$user->id);
-      //  return $orders;
+
         return view('dashboard', ['user'=>$user, 'address'=>$address,'orders'=>$orders]);
     }
 

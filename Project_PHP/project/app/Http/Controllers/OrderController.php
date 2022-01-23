@@ -25,9 +25,7 @@ class OrderController extends Controller
         }
 
         $products = User::find(Auth::id())->cart->products;
-        if($products == NULL){
-            return redirect('/');
-        }
+
         $order = new Order();
         $order->user_id = Auth::id();
         $order->save();

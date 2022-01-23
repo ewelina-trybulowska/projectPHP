@@ -17,9 +17,9 @@ class ProductController extends Controller
     }
     public function women()
     {
-        //$products = Product::ofType('Women')->Available()->get();  // wersja z tym, że usuwamy gdy amount=0
 
-        $products = Product::ofType('Women')->whereHas('shelves', function($query){ // wersja z tym, że sprawdzamy czy amount>0
+
+        $products = Product::ofType('Women')->whereHas('shelves', function($query){
             $query->where('amount','>',0);
         })->get();
         return view('products.index', ['products' => $products]);
@@ -27,7 +27,6 @@ class ProductController extends Controller
 
     public function men()
     {
-        //$products = Product::ofType('Men')->Available()->get();
         $products = Product::ofType('Men')->whereHas('shelves', function($query){
             $query->where('amount','>',0);
         })->get();

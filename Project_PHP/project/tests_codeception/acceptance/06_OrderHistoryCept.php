@@ -2,6 +2,11 @@
 $I = new AcceptanceTester($scenario ?? null);
 $I->wantTo('I want to see order history');
 
+$I->amOnPage('/orders');
+
+$I->seeCurrentUrlEquals('/');
+
+
 $I->amOnPage('/dashboard' );
 
 $I->seeCurrentUrlEquals('/login');
@@ -45,6 +50,7 @@ $I->see('Lasocki','tr > td');
 $I->see('120','tr > td');
 $I->see('Deezee','tr > td');
 $I->see('80','tr > td');
+
 
 
 
