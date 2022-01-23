@@ -28,7 +28,7 @@ class Product extends Model
     }
 
     public function carts(){
-        return $this->belongsToMany(Cart::class)->withPivot('total_product_price', 'total_product_amount');
+        return $this->belongsToMany(Cart::class)->withPivot('total_product_price', 'total_product_amount', 'product_size');
     }
 
     public function scopeAvailable($query){

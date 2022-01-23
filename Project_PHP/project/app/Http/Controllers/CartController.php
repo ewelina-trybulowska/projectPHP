@@ -36,22 +36,37 @@ class CartController extends Controller
       if(Auth::id()) $cart = User::find(Auth::id())->cart;
         else $cart=Cart::find(1);
 
-        //$qty=$request->quantity;
         $qty=$request->amount;
 
+        $a=0;
         if($cart->products->contains($product->id)){
-            $p=$cart->products()->find($product->id);
-            $tpp=$p->pivot->total_product_price+($product->price)*$qty;
-            $tpa=$p->pivot->total_product_amount+$qty;
-            $cart->products()->updateExistingPivot($product->id, ['total_product_price' => $tpp, 'total_product_amount' => $tpa]);
+            $products=Cart::find($cart->id)->products;
+            foreach($products as $p){
+                if($p->pivot->product_size==$request->size && $p->pivot->product_id==$product->id ) {
+                    $tpp = $p->pivot->total_product_price + ($product->price) * $qty;
+                    $tpa = $p->pivot->total_product_amount + $qty;
+                    $cart->products()->wherePivot('product_size','=',$request->size)
+                        ->wherePivot('product_id','=',$product->id)
+                        ->updateExistingPivot($product->id, ['total_product_price' => $tpp, 'total_product_amount' => $tpa]);
+                    $a=1;
+                    break;
+                }
+            }
+            if($a==0){
+                $cart->products()->attach($product->id, ['total_product_price' => ($product->price)*$qty,
+                    'total_product_amount' => $qty, 'product_size'=>$request->size]);
+            }
         }
         else{
-            $cart->products()->attach($product->id, ['total_product_price' => ($product->price)*$qty, 'total_product_amount' => $qty]);
+            $cart->products()->attach($product->id, ['total_product_price' => ($product->price)*$qty,
+                'total_product_amount' => $qty, 'product_size'=>$request->size]);
         }
 
         $cart->total_price+=($product->price)*$qty;
         $cart->total_amount+=$qty;
         $cart->save();
+        $x=$row->first()->amount-$qty;
+        \App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->update(['amount' => $x]);
         $product->save();
         $products=Cart::find($cart->id)->products;
         return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
@@ -66,6 +81,14 @@ class CartController extends Controller
         $cart->total_amount=0;
         $cart->total_price=0;
         $cart->save();
+        /*foreach($products as $product){
+            //$p=$cart->products()->find($product->id);
+           // $tpa=$p->pivot->total_product_amount;
+            //$row=\App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->get();
+            //$x=$row->first()->amount+$tpa;
+           // \App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->update(['amount' => $x]);
+        }*/
+
         $products=Cart::find($cart->id)->products;
 
         if(Auth::id()) {
@@ -73,7 +96,6 @@ class CartController extends Controller
         }
         else{
             return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
-
         }
     }
 /*
