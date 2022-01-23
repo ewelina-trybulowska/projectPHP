@@ -1,6 +1,6 @@
 <?php
 $I = new AcceptanceTester($scenario ?? null);
-$I->wantTo('See cart for quest');
+$I->wantTo('See cart for guest');
 
 $I->amOnPage('/');
 

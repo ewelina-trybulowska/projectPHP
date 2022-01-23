@@ -76,22 +76,20 @@ class CartController extends Controller
     public function edit(Product $product){ //delete product from cart
         if(Auth::id()) $cart = User::find(Auth::id())->cart;
         else $cart=Cart::find(1);
-        $cart->products()->detach($product->id);
 
+        $products2=Cart::find($cart->id)->products;
+        foreach($products2 as $p){
+            $row=\App\Models\Shelf::where('product_id', $p->pivot->product_id)->where('size',$p->pivot->product_size)->get();
+            $x=$row->first()->amount+$p->pivot->total_product_amount;
+            \App\Models\Shelf::where('product_id', $p->pivot->product_id)->where('size',$p->pivot->product_size)->update(['amount' => $x]);
+            \App\Models\Shelf::where('product_id', $p->pivot->product_id)->where('size',$p->pivot->product_size)->get()->first()->save();
+        }
         $cart->total_amount=0;
         $cart->total_price=0;
         $cart->save();
-        /*
-        $products2=Cart::find($cart->id)->products;
-        foreach($products2 as $product){
-            $p=$cart->products()->find($product->id);
-           $tpa=$p->pivot->total_product_amount;
-            $row=\App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->get();
-            $x=$row->first()->amount+$tpa;
-           \App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->update(['amount' => $x]);
-        }*/
 
         $products=Cart::find($cart->id)->products;
+        $cart->products()->detach($product->id);
 
         if(Auth::id()) {
             return redirect()->route('dashboard');
@@ -100,25 +98,6 @@ class CartController extends Controller
             return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
         }
     }
-/*
-if(Auth::id()) $cart = User::find(Auth::id())->cart;
-else $cart=Cart::find(1);
-
-$products=Cart::find($cart)->products;
-
-if(!count($products)){
-return Redirect::back()->withErrors(['msg'=>"You have empty cards! Back to main website to buy something! :)"]);
-}
-else{
-    $cart->products()->detach($product->id);
-
-    $cart->total_amount=0;
-    $cart->total_price=0;
-    $cart->save();
-    $products=Cart::find($cart->id)->products;
-    // return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
-    return redirect()->route('dashboard');
-}*/
 
     public function show($cart)
     {

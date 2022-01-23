@@ -10,6 +10,15 @@ $I->click('ADD TO CART');
 $I->amOnPage('/carts');
 
 $I->click("Clear cart");
+
+$I->dontseeInDatabase('cart_product', [
+    'cart_id' => 1,
+    'product_id' => 1,
+    'total_product_price' => 240,
+    'total_product_amount' => 2,
+    'product_size' => '39'
+]);
+
 $I->seeInDatabase('carts', [
     'user_id' => null,
     'total_price' => 0,
