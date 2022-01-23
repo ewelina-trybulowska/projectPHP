@@ -34,7 +34,7 @@
                 Number of users:
                 {{$users->count()}}
                 <br><br>
-                Number of users registred today:
+                Number of users registered today:
                 {{$todays_users->count()}}
                 <br><br>
 

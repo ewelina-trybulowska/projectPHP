@@ -17,6 +17,7 @@ class DashboardController extends Controller
         $users = User::ofType('User')->get();
         $todays_users = User::whereDate('created_at',DB::raw('CURDATE()'))->get();
 
+
         $stock = Shelf::sum('amount');
         $orders = Order::whereDate('created_at',DB::raw('CURDATE()'))->get();
 
