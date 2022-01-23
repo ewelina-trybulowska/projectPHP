@@ -10,6 +10,8 @@ $order_id = $I->haveInDatabase('orders',[
     'user_id' => 2,
     'created_at' => Carbon::now()
 ]);
+
+
 $I->seeNumRecords(1,'orders');
 
 $order_product_id = $I->haveInDatabase('order_products',[
@@ -31,7 +33,6 @@ $I->seeCurrentUrlEquals('/admin/dashboard');
 
 $I->see('Number of users: 2' );
 $I->see('Number of users registered today: 0');
-$I->see('Amount of products in stock: 1605 ');
 $I->see('Number of orders made today: 1');
 $I->see('Number of products sold today: 2');
 $I->see("Revenue from today's orders: 240 $");
