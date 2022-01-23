@@ -15,7 +15,7 @@
         <div class="clearfix" >
 
             <h4 style="text-align: center">
-                YOUR PPRODUCTS IN ORDER
+                YOUR PRODUCTS IN ORDER
             </h4>
             <hr>
     <table>

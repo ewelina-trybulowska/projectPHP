@@ -40,8 +40,8 @@ class ShelvesController extends Controller
     public function store(Request $request, Product $product)
     {
         $request->validate([
-            'size' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric']
+            'size' => ['required', 'integer','between:37,43'],
+            'amount' => ['required', 'integer']
         ]);
 
         $shelf = Shelf::where('product_id',$product->id)->where('size', $request->size)->first();

@@ -48,7 +48,7 @@
 
                         <div class="mt-4">
                             <x-label for="image" :value="__('Image')" />
-                            <x-input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
+                            <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

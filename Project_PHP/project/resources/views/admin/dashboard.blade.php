@@ -26,6 +26,32 @@
                 </x-button>
             </a>
 
+
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <br>
+                <b>Statistics</b>
+                <br>
+                Number of users:
+                {{$users->count()}}
+                <br><br>
+                Number of users registred today:
+                {{$todays_users->count()}}
+                <br><br>
+
+                Amount of products in stock:
+                {{$stock}}
+                <br><br>
+                Number of orders made today:
+                {{$orders->count()}}
+                <br><br>
+                Number of products sold today:
+                {{$products_amount}}
+                <br><br>
+                Revenue from today's orders:
+                <b>{{$orders_value}} $</b>
+
+            </div>
+
         </div>
     </div>
 </x-app-layout>

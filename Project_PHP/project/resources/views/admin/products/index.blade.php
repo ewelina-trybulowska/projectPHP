@@ -17,7 +17,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if($women_products->isEmpty())
-                        <p class="p-6">No products in database.</p>
+                        <p class="p-6">No women products in database.</p>
                     @else
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -40,6 +40,9 @@
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Details</span>
+                                </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Shelves</span>
                                 </th>
                             </tr>
                             </thead>
@@ -63,6 +66,9 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('admin.products.show', $product) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="{{ route('shelves.index', $product) }}" class="text-indigo-600 hover:text-indigo-900">Shelves</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -77,7 +83,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if($men_products->isEmpty())
-                        <p class="p-6">No admins in database.</p>
+                        <p class="p-6">No men products in database.</p>
                     @else
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -101,6 +107,9 @@
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Details</span>
                                 </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Shelves</span>
+                                </th>
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -122,6 +131,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('admin.products.show', $product) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="{{ route('shelves.index', $product) }}" class="text-indigo-600 hover:text-indigo-900">Shelves</a>
                                     </td>
                                 </tr>
                             @endforeach
