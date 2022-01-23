@@ -89,6 +89,7 @@
                 </tr>
             </table>
           {{--  <table>--}}
+            @if(count($products))
             @if (!\Session::has('success'))
                 <form method="post" action="{{ route('carts.update', $cart) }}">
                     @csrf
@@ -108,7 +109,23 @@
                 </form>
             @endif
 
+{{--
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
+--}}
+                <div class="error" style="background: #d34343; color: white">
+                    @if($errors->any())
+                        <p>{{$errors->first()}}</p>
+                    @endif
+                </div>
+
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+
+                        {!! \Session::get('success') !!}
+
+                    </div>
+                @endif
+
             @if (!(\Auth::id()))
                 <form method="post" action="{{route("orders.withoutLoginIndex",$cart)}}">
                     @csrf
@@ -156,7 +173,7 @@
                     <div><br></div>
 
                     <x-button  >
-                        <a class="button">Order</a>
+                        <a class="button2">Order</a>
                     </x-button>
 
                 </form>
@@ -170,22 +187,11 @@
 
                 </div>
             @endif
-
-
-
-            <div class="error" style="background: #d34343; color: white">
-                @if($errors->any())
-                    <p>{{$errors->first()}}</p>
-                @endif
-            </div>
-
-            @if (\Session::has('success'))
-                <div class="alert alert-success">
-
-                        {!! \Session::get('success') !!}
-
-                </div>
             @endif
+
+
+
+
         </div>
     </div>
 

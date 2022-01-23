@@ -37,25 +37,19 @@ class OrderController extends Controller
             }
 
 
-            return view("orders.show", ['order' => $order]);
-
-         /*   $order = new Order();
-            $order->id = rand(100,200);
-            $order->user_id = null;
-            $order->save();
-            return view("orders.show", ['order' => $order]);*/
+            return view("orders.show", ['order' => $order,'products'=>$products]);
 
 
     }
 
     public function withoutLoginIndex($cart){
-
+        $products=Cart::find($cart)->products;
         $order = new Order();
         $order->id = rand(100,200);
         $order->user_id = null;
         $order->save();
 
-        return view("orders.show", ['order' => $order]);
+        return view("orders.show", ['order' => $order,'products'=>$products]);
     }
 
     /**

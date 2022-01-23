@@ -29,15 +29,18 @@
 
 
         </div>
+        <div class="backside" style="background:#E6E6FA;padding: 10px 30px; width: 300px;">
+            <a href="{{ route('carts.edit',$products[0])}}">Complete your transaction!</a>
+        </div>
 
 {{--
 Nie wiadomo jeszcze czy dziala
 --}}
-        @if (Auth::check())
+      {{--  @if (Auth::check())
         <div class="backside" style="background:#E6E6FA;padding: 10px 30px; width: 300px;">
             <a href="{{ route('dashboard')}}">Go to your account!</a>
         </div>
-        @endif
+        @endif--}}
 
 
     </div>
