@@ -16,7 +16,7 @@
                     </article>
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title">Type</h6>
+                            <h6 class="title">Brand</h6>
                         </header>
                         <div class="filter-content">
                             <div class="card-body">
@@ -61,9 +61,15 @@
 			  </span>
                                 </label>
                                 <label class="form-check">
-                                    <input class="form-check-input" type="radio" name="type" value="high-heels">
+                                    <input class="form-check-input" type="radio" name="type" value="elegant">
                                     <span class="form-check-label">
 			    Elegant
+			  </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" value="high-heels">
+                                    <span class="form-check-label">
+			    High-heels
 			  </span>
                                 </label>
                             </div>
