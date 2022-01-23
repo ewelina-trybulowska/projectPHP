@@ -15,5 +15,3 @@ $I->click('Log in');
 $I->seeCurrentUrlEquals('/');
 
 $I->see('Dashboard');
-
-
