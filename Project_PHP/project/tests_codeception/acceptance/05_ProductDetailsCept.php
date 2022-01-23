@@ -13,15 +13,15 @@ $I->See('Select your size: :','label');
 
 $I->click('SEE OPINIONS');
 
-$I->amOnPage('/products/1/reviews');
+$I->seeCurrentUrlEquals('/products/3/reviews');
 
 $I->click('Back to the product...');
 
-$I->amOnPage('/products/3');
+$I->seeCurrentUrlEquals('/products/3');
 
 $I->click('Return to products list');
 
-$I->amOnPage('/women');
+$I->seeCurrentUrlEquals('/women');
 
 $I->amOnPage('/products/3');
 $I->selectOption('size',39);
@@ -31,7 +31,7 @@ $I->see('We do not have as many pairs of shoes as you want to buy, please reduce
 $I->fillField('amount',1);
 $I->selectOption('size',39);
 $I->click('ADD TO CART');
-$I->amOnPage('/carts?cart=1');
+$I->seeCurrentUrlEquals('/carts?cart=1');
 $I->click('Clear cart');
 
 
