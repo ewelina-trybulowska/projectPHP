@@ -126,7 +126,7 @@
                     </div>
                 @endif
 
-            @if (!(\Auth::id()))
+            @if (!(Auth::check()))
                 <form method="post" action="{{route("orders.withoutLoginIndex",$cart)}}">
                     @csrf
 
@@ -180,7 +180,7 @@
             @endif
 
 
-            @if ((\Auth::id()))
+            @if ((Auth::check()))
                 <div class="px-6 py-4 whitespace-nowrap">
 
                         <a class="button" href="{{route("orders.index")}}">Order</a>
