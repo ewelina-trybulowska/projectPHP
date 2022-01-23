@@ -2,9 +2,14 @@
     <div class="col-sm-6 container shadow sm:rounded-lg border-gray-100" style="padding: 20px;">
 
         <div class="clearfix" >
+            <div class="error" style="background: #d34343; color: white">
+                @if($errors->any())
+                    <p>{{$errors->first()}}</p>
+                @endif
+            </div>
 
             <img src="{{ asset( 'storage/images/' . $product->image->file_name) }}" style="width: 380px; height: 300px; float: left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
-            <form  method="POST" action ="{{route('carts.store', $product)}}">
+            <form  method="post" action ="{{route('carts.store', $product,Request::path())}}">
                 @csrf
             <div class="description" style="float: left; margin: 30px;" >
                 <h2>{{ $product->brand . ' ' . $product->model }}</h2>
@@ -18,23 +23,19 @@
                 <br>
                 <label class='muted'>Quantity:</label>
                 <div class="input-amount">
-                    <input class="amount" type="number" name="quantity" value="1"  min="1" max="10" style="background-color:#f6d8df;">
+                    <input class="amount" type="number" id="amount" name="amount" value="1"  min="1" max="10" style="background-color:#f6d8df;">
                 </div>
 
                 <br>
                 <label class='muted'>Select your size: :</label>
-                <br>
-                <div class="custom-select" style="width:200px;">
-                    <select id="ddlShoes" style="background-color:#f6d8df;">
+                <label for="#size">
+                    <select class="custom-select mr-sm-2 sm:rounded-lg" id="ddlShoes" name="size" style="background-color:#f6d8df;">
                         <option value="" >Select:</option>
-
                         @foreach( \App\Models\Shelf::where('product_id', $product->id)->get() as $row)
-                            <option name="size" value="{{$row->size}}">{{$row->size}}</option>
+                            <option id="size" name="size" value="{{$row->size}}">{{$row->size}}</option>
                         @endforeach
-
-
                     </select>
-                </div>
+                </label>
                 <br>
                 <br>
 
@@ -45,6 +46,7 @@
                 <a href="{{ url("/$category") }}" style="background:#E6E6FA;padding: 10px 30px; width: 600px;">Return to products list</a>
 
             </div>
+
 
 
             <div class="Cart">
@@ -63,6 +65,7 @@
                     }
                 </script>
             </form>
+
             <br>
             <br>
 

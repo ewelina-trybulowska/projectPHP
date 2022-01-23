@@ -28,10 +28,16 @@ class CartController extends Controller
 
     public function store(Request $request, Product $product) //add product to cart
     {
-        if(Auth::id()) $cart = User::find(Auth::id())->cart;
+        $row=\App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->get();
+       if($row->first()->amount < $request->amount){
+            return Redirect::back()->withErrors(['msg'=>"We do not have as many pairs of shoes as you want to buy, please reduce the number of pairs"]);
+        }
+
+      if(Auth::id()) $cart = User::find(Auth::id())->cart;
         else $cart=Cart::find(1);
 
-        $qty=$request->quantity;
+        //$qty=$request->quantity;
+        $qty=$request->amount;
 
         if($cart->products->contains($product->id)){
             $p=$cart->products()->find($product->id);
@@ -49,6 +55,7 @@ class CartController extends Controller
         $product->save();
         $products=Cart::find($cart->id)->products;
         return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
+
     }
 
     public function edit(Product $product){ //delete product from cart
