@@ -60,8 +60,34 @@ class CartController extends Controller
         $cart->total_price=0;
         $cart->save();
         $products=Cart::find($cart->id)->products;
-        return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
+
+        if(Auth::id()) {
+            return redirect()->route('dashboard');
+        }
+        else{
+            return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
+
+        }
     }
+/*
+if(Auth::id()) $cart = User::find(Auth::id())->cart;
+else $cart=Cart::find(1);
+
+$products=Cart::find($cart)->products;
+
+if(!count($products)){
+return Redirect::back()->withErrors(['msg'=>"You have empty cards! Back to main website to buy something! :)"]);
+}
+else{
+    $cart->products()->detach($product->id);
+
+    $cart->total_amount=0;
+    $cart->total_price=0;
+    $cart->save();
+    $products=Cart::find($cart->id)->products;
+    // return redirect()->route('carts.index', ['cart' => $cart, 'products'=>$products]);
+    return redirect()->route('dashboard');
+}*/
 
     public function show($cart)
     {

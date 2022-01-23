@@ -67,9 +67,22 @@ class UserSeeder extends Seeder
             'user_id' => 3
         ]);
 
+        DB::table('addresses')->insert([
+            'street_address_1' => 'Forest 5',
+            'street_address_2'=>'',
+            'zip_code'=>'543-11',
+            'city'=>'Cracow',
+            'user_id' => 2
+        ]);
+
         DB::table('carts')->insert([
             'user_id' => 3
         ]);
+
+        DB::table('carts')->insert([
+            'user_id' => 2
+        ]);
+
 
 
     }
