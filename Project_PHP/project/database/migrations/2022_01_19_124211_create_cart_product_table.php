@@ -20,6 +20,7 @@ class CreateCartProductTable extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->integer('total_product_price')->default('0');
             $table->integer('total_product_amount')->default('0');
+            $table->string('product_size');
         });
     }
 
