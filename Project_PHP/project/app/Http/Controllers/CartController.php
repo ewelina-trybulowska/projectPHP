@@ -81,12 +81,14 @@ class CartController extends Controller
         $cart->total_amount=0;
         $cart->total_price=0;
         $cart->save();
-        /*foreach($products as $product){
-            //$p=$cart->products()->find($product->id);
-           // $tpa=$p->pivot->total_product_amount;
-            //$row=\App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->get();
-            //$x=$row->first()->amount+$tpa;
-           // \App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->update(['amount' => $x]);
+        /*
+        $products2=Cart::find($cart->id)->products;
+        foreach($products2 as $product){
+            $p=$cart->products()->find($product->id);
+           $tpa=$p->pivot->total_product_amount;
+            $row=\App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->get();
+            $x=$row->first()->amount+$tpa;
+           \App\Models\Shelf::where('product_id', $product->id)->where('size',$request->size)->update(['amount' => $x]);
         }*/
 
         $products=Cart::find($cart->id)->products;

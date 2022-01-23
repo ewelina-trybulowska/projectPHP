@@ -131,10 +131,10 @@
                     <table class="min-w-full bg-white divide-y divide-gray-200">
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">ORDER NUMBER</div>
+                                <div class="text-sm text-gray-500">ORDER NUMBER</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">DATE</div>
+                                <div class="text-sm text-gray-500">DATE</div>
                             </td>
 
                         </tr>

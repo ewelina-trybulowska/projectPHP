@@ -27,7 +27,7 @@
                 </div>
 
                 <br>
-                <label class='muted'>Select your size: :</label>
+                <label class='muted'>Select your size: </label>
                 <label for="#size">
                     <select class="custom-select mr-sm-2 sm:rounded-lg" id="ddlShoes" name="size" style="background-color:#f6d8df;">
                         <option value="" >Select:</option>

@@ -9,7 +9,7 @@ $I->see('$80', 'h5');
 $I->see('PRODUCT INFO', 'h4');
 $I->see('Yellow heels for every women.', 'h6');
 $I->See('Quantity','label');
-$I->See('Select your size: :','label');
+$I->See('Select your size:','label');
 
 $I->click('SEE OPINIONS');
 
