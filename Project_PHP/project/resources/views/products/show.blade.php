@@ -50,7 +50,7 @@
 
 
             <div class="Cart">
-                <button class="button-53" role="button" onclick="return Validate()">ADD TO CARD</button>
+                <button class="button-53" role="button" onclick="return Validate()">ADD TO CART</button>
             </div>
 
                 <script type="text/javascript">
