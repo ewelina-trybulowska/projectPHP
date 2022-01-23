@@ -20,32 +20,42 @@ class OrderController extends Controller
      */
     public function index()
     {
+        if(!(Auth::check())){
+            return redirect('/');
+        }
 
-            $order = new Order();
-            $order->user_id = Auth::id();
-            $order->save();
-            $products = User::find(Auth::id())->cart->products;
-
-            foreach ($products as $p) {
-
-                DB::table('order_products')->insert([
-                    'order_id' => $order->id,
-                    'product_id' => $p->id,
-                    'tot_price' => $p->pivot->total_product_price,
-                    'tot_amount' => $p->pivot->total_product_amount
-                ]);
-            }
+        $products = User::find(Auth::id())->cart->products;
+        if($products == NULL){
+            return redirect('/');
+        }
+        $order = new Order();
+        $order->user_id = Auth::id();
+        $order->save();
 
 
-            return view("orders.show", ['order' => $order,'products'=>$products]);
+        foreach ($products as $p) {
+
+            DB::table('order_products')->insert([
+                'order_id' => $order->id,
+                'product_id' => $p->id,
+                'tot_price' => $p->pivot->total_product_price,
+                'tot_amount' => $p->pivot->total_product_amount
+            ]);
+        }
+
+
+        return view("orders.show", ['order' => $order,'products'=>$products]);
 
 
     }
 
     public function withoutLoginIndex($cart){
+        if($cart == NULL){
+            return redirect('/');
+        }
         $products=Cart::find($cart)->products;
+
         $order = new Order();
-        $order->id = rand(100,200);
         $order->user_id = null;
         $order->save();
 
