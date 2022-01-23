@@ -45,7 +45,7 @@ class Product extends Model
         //'subcategory_id',
         'image_id',
         'brand',
-        'model',
+        'type',
         'price',
         'description',
     ];
