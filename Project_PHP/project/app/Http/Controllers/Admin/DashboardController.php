@@ -17,8 +17,6 @@ class DashboardController extends Controller
         $users = User::ofType('User')->get();
         $todays_users = User::whereDate('created_at',DB::raw('CURDATE()'))->get();
 
-
-        $stock = Shelf::sum('amount');
         $orders = Order::whereDate('created_at',DB::raw('CURDATE()'))->get();
 
         $value = array();
@@ -34,7 +32,6 @@ class DashboardController extends Controller
 ;        return view('admin.dashboard')
         ->with('users',$users)
         ->with('todays_users', $todays_users)
-        ->with('stock', $stock)
         ->with('orders',$orders)
         ->with('orders_value',$orders_value)
         ->with('products_amount',$products_amount);

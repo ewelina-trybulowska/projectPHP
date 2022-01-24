@@ -37,10 +37,6 @@
                 Number of users registered today:
                 {{$todays_users->count()}}
                 <br><br>
-
-                Amount of products in stock:
-                {{$stock}}
-                <br><br>
                 Number of orders made today:
                 {{$orders->count()}}
                 <br><br>
