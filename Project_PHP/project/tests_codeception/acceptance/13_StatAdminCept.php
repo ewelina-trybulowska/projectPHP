@@ -11,13 +11,16 @@ $order_id = $I->haveInDatabase('orders',[
     'created_at' => Carbon::now()
 ]);
 
+
 $I->seeNumRecords(1,'orders');
+
 $order_product_id = $I->haveInDatabase('order_products',[
     'order_id' => $order_id,
     'product_id' => '1',
     'tot_price' => '240',
     'tot_amount' => '2'
 ]);
+$I->seeNumRecords(1,'order_products');
 
 $I->amOnPage('/admin');
 
