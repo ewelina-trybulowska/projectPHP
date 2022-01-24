@@ -57,6 +57,16 @@ class OrderController extends Controller
         $order->user_id = null;
         $order->save();
 
+        foreach ($products as $p) {
+
+            DB::table('order_products')->insert([
+                'order_id' => $order->id,
+                'product_id' => $p->id,
+                'tot_price' => $p->pivot->total_product_price,
+                'tot_amount' => $p->pivot->total_product_amount
+            ]);
+        }
+
         return view("orders.show", ['order' => $order,'products'=>$products]);
     }
 
